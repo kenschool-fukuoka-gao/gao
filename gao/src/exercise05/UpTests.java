@@ -1,5 +1,5 @@
 package exercise05;
 
-public class UpTest {
+public class UpTests {
 
 }
