@@ -28,7 +28,6 @@ public void jspInit() {
         Connection con = null;
         Statement stmt = null;
         ResultSet rs = null;
-        Timestamp ts = new Timestamp(System.currentTimeMillis());
         GregorianCalendar cal = new GregorianCalendar();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         String datestr = format.format(cal.getTime());
@@ -114,6 +113,5 @@ public void jspInit() {
 %>
 			</table>
 		</div>
-
 </body>
 </html>
