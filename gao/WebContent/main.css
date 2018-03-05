@@ -113,14 +113,14 @@ table.toolbar {
 
 table.list th {
 	width: 150px;
-	text-align: left;
+	text-align: center;
 	padding: 8px;
 	color:#fff;
 	background-color: #004A3E;
 }
 
 table.list td {
-	text-align: left;
+	text-align: center;
 	background-color: #53B9A8;
 	padding: 8px;
 }

@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>削除</title>
-<link rel="STYLESHEET" href="login.css" type="text/css">
+<link rel="STYLESHEET" href="main.css" type="text/css">
 </head>
 <body>
 <h1>削除確認</h1>
