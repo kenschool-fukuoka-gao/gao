@@ -40,7 +40,7 @@ public void jspInit() {
             stmt = con.createStatement();
             // SQL()を実行して、結果を得る
             rs = stmt.executeQuery(
-              "select * from indexps cross join site");
+              "select siteName, responsible, deadLine, compDate from indexps join site using (siteId)");
 %>
 <h1>現場一覧</h1>
 	<hr>
@@ -72,8 +72,6 @@ public void jspInit() {
 					<th>期限</th>
 					<th>完了</th>
 					<form action="DetailList.jsp">
-						<td align="center" rowspan="2"><input type="submit"
-							value="詳細"></td>
 				</tr>
 <%
 				// 得られた結果をレコードごとに表示
@@ -98,6 +96,8 @@ public void jspInit() {
 <%
 					}
 %>
+
+						<td><input type="submit" value="詳細"></td>
 				</tr>
 <%
             }
