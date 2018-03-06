@@ -15,13 +15,13 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class DeleteService
  */
 @WebServlet("/Delete")
-public class Delete extends HttpServlet {
+public class DeleteService extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Delete() {
+    public DeleteService() {
         super();
         // TODO Auto-generated constructor stub
     }
