@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class loginCheck
  */
@@ -44,6 +45,9 @@ public class LoginService extends HttpServlet {
     	userPassword = "";
     	}
 
+    	// セッションを取得.
+    	HttpSession hsession = request.getSession();
+
     	// データベースへのアクセス開始
         Connection con = null;
         Statement stmt = null;
@@ -64,6 +68,8 @@ public class LoginService extends HttpServlet {
             while (rs.next()) {
             	// ログイン認証.
             	if (rs.getString("employeeId").equals(userID) && rs.getString("password").equals(userPassword)){
+            		hsession.setAttribute("employeeName", rs.getString("employeeName"));
+
             		// リストページへ遷移(リダイレクト).
             		response.sendRedirect("./List.jsp");
             	}else{

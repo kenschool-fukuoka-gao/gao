@@ -4,17 +4,6 @@
     <%@page import="java.sql.*"%>
     <%@page import="java.util.*" %>
 	<%@page import="java.text.*" %>
-<%!
-// サーブレットのinitメソッドに相当
-public void jspInit() {
-    try {
-        // JDBCドライバをロード
-        Class.forName("com.mysql.jdbc.Driver");
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
-}
-%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -32,6 +21,8 @@ public void jspInit() {
         //SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         //String datestr = format.format(cal.getTime());
         try {
+            // JDBCドライバをロード
+            Class.forName("com.mysql.jdbc.Driver");
             // データベースに接続するConnectionオブジェクトの取得
             con = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/sample",
@@ -41,10 +32,12 @@ public void jspInit() {
             // SQL()を実行して、結果を得る
             rs = stmt.executeQuery(
               "select siteName, responsible, deadLine, compDate from indexps join site using (siteId)");
+            HttpSession hsession = request.getSession();
+            String employeeName = (String) session.getAttribute("employeeName");
 %>
 <h1>現場一覧</h1>
 	<hr>
-		<div align="right">ようこそ ○○○ さん</div>
+		<div align="right">ようこそ <%= employeeName %> さん</div>
 		<!-- 作業登録・検索 -->
 		<table border="0" class="toolbar">
 			<tr>
