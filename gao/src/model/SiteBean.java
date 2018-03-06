@@ -11,10 +11,10 @@ public class SiteBean {
 	public void setSiteId(String siteName){
 		this.siteName = siteName;
 	}
-	public String getsiteName(){
+	public String getSiteName(){
 		return siteName;
 	}
-	public void setsiteName(String siteName){
+	public void setSiteName(String siteName){
 		this.siteName = siteName;
 	}
 }
