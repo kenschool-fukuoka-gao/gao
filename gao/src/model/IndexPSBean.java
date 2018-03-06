@@ -2,7 +2,7 @@ package model;
 
 public class IndexPSBean {
 
-	private int siteId;
+	private String siteId;
 	private String processId;
 	private String responsible;
 	private String dateLine;
@@ -10,10 +10,10 @@ public class IndexPSBean {
 	private String worker;
 	private String startDate;
 
-	public int getSiteId(){
+	public String getSiteId(){
 		return siteId;
 	}
-	public void setSiteId(int siteId){
+	public void setSiteId(String siteId){
 		this.siteId = siteId;
 	}
 	public String getProcessId(){
