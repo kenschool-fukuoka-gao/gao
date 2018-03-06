@@ -9,17 +9,15 @@
 <link rel="STYLESHEET" href="main.css" type="text/css">
 </head>
 <body>
-<form action="List.jsp" method="get">
+<form method="post" action="./LoginService" name="Login">
 	<fieldset>
 	<h1>Login</h1>
 	<form>
 		<div class="iconUser"></div>
-		<input type="text1" placeholder="UserID" required>
+		<input type="text" placeholder="UserID" name="UserID" required>
 		<div class="iconPassword"></div>
-		<input type="password1" placeholder="Password" required>
+		<input type="password" placeholder="Password" name="Password" required>
 		<input type="submit" name="login" value="Enter">
-			<form action="list.html" method="get">
-			</form>
     </fieldset>
 	</form>
 </body>

@@ -30,7 +30,7 @@ form{
   background:#f0f0f0;
   padding:6% 4%;
 }
-input[type="password1"]{
+input[name="Password"]{
   width:76%;
   height:20px;
   margin-bottom:4%;
@@ -64,7 +64,7 @@ input[type="password1"]{
   background-position:center;
   border:1px solid #ccc;
 }
-input[type="text1"]{
+[name="UserID"]{
   width:76%;
   height:20px;
   margin-bottom:4%;

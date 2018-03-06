@@ -28,9 +28,9 @@ public void jspInit() {
         Connection con = null;
         Statement stmt = null;
         ResultSet rs = null;
-        GregorianCalendar cal = new GregorianCalendar();
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        String datestr = format.format(cal.getTime());
+        //GregorianCalendar cal = new GregorianCalendar();
+        //SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        //String datestr = format.format(cal.getTime());
         try {
             // データベースに接続するConnectionオブジェクトの取得
             con = DriverManager.getConnection(
@@ -86,9 +86,9 @@ public void jspInit() {
 					<td><%= rs.getString("deadLine")%></td>
 					<%-- 完了日を表示 --%>
 <%
-					if(rs.getInt("compDate") == 1){
+					if(rs.getString("compDate") != null){
 %>
-					<td><%= datestr %></td>
+					<td><%= rs.getString("compDate") %></td>
 <%
 					}else{
 %>
