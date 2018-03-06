@@ -32,17 +32,19 @@
             // SQL()を実行して、結果を得る
             rs = stmt.executeQuery(
               "select siteName, responsible, deadLine, compDate from indexps join site using (siteId)");
-            HttpSession hsession = request.getSession();
             String employeeName = (String) session.getAttribute("employeeName");
 %>
 <h1>現場一覧</h1>
 	<hr>
-		<div align="right">ようこそ <%= employeeName %> さん</div>
+		<div align="right">ようこそ <%= employeeName %> さん <a href="Login.jsp"><input type="submit" value="Logout" name="ログアウト">
+<%		session.invalidate();
+		session = request.getSession(false); %>
+		</a></div>
 		<!-- 作業登録・検索 -->
 		<table border="0" class="toolbar">
 			<tr>
 				<form action="Regist.jsp">
-					<td><input type="submit" value="作業登録"></td>
+					<td><input type="submit" value="作業登録" name="change"></td>
 				</form>
 				<td align="right">
 					<table border="0">
@@ -50,7 +52,7 @@
 							<td>検索キーワード</td>
 							<form action="Search.jsp">
 								<td><input type="text" name="keyword" value="" size="24"></td>
-								<td><input type="submit" value="検索"></td>
+								<td><input type="submit" value="検索" name="change"></td>
 							</form>
 						</tr>
 					</table>
@@ -90,7 +92,7 @@
 					}
 %>
 
-						<td><input type="submit" value="詳細"></td>
+						<td><input type="submit" value="詳細" name="change"></td>
 				</tr>
 <%
             }

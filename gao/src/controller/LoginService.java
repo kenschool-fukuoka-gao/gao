@@ -46,7 +46,7 @@ public class LoginService extends HttpServlet {
     	}
 
     	// セッションを取得.
-    	HttpSession hsession = request.getSession();
+    	HttpSession session = request.getSession(true);
 
     	// データベースへのアクセス開始
         Connection con = null;
@@ -68,7 +68,8 @@ public class LoginService extends HttpServlet {
             while (rs.next()) {
             	// ログイン認証.
             	if (rs.getString("employeeId").equals(userID) && rs.getString("password").equals(userPassword)){
-            		hsession.setAttribute("employeeName", rs.getString("employeeName"));
+            		session.setAttribute("employeeName", rs.getString("employeeName"));
+            		session.setAttribute("employeeId", rs.getString("employeeId"));
 
             		// リストページへ遷移(リダイレクト).
             		response.sendRedirect("./List.jsp");
