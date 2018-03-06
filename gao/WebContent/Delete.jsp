@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="model.SiteBean" %>
+<% SiteBean site = (SiteBean) request.getAttribute("siteName"); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -14,9 +16,11 @@
         <div align="center">
             <table border="0">
                 <form action="List.jsp">
+                	<input type="hidden" name="action" value="delete" />
+                    <input type="hidden" name="site_id" value="<%= site.getSiteId() %>" />
                     <tr>
                         <td class="add_field">
-                            プロジェクト名○○○を削除します。<br>
+                            お客様名 <%= site.getSiteName() %>を削除します。<br/>
                             よろしいですか？
                         </td>
 	            </tr>
@@ -28,7 +32,7 @@
                                         <input type="submit" value="削除">
                                     </td>
                                     </form>
-                                    <form action="DetailList.jsp">
+                                    <form action="DetailList.jsp" method="post">
                                     <td>
                                         <input type="submit" value="キャンセル">
                                     </td>

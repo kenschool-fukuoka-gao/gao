@@ -13,11 +13,13 @@
         <hr>
         <div align="center">
             <table border="0">
-                <form action="List.jsp">
+                <form action="List.jsp" method="get">
                     <tr>
                         <td class="add_field">
-                            エラーが発生しました。<br>
-                            内容: ○○○
+                            エラーが発生しました。<br/>
+                            <!--
+                            内容: <%= request.getAttribute("message") %>
+                            -->
                         </td>
 	            </tr>
                     <tr>
