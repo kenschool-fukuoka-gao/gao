@@ -36,9 +36,7 @@
 %>
 <h1>現場一覧</h1>
 	<hr>
-		<div align="right">ようこそ <%= employeeName %> さん <a href="Login.jsp"><input type="submit" value="Logout" name="ログアウト">
-<%		session.invalidate();
-		session = request.getSession(false); %>
+		<div align="right">ようこそ <%= employeeName %> さん <a href="./LogoutService"><input type="submit" value="Logout" name="ログアウト" >
 		</a></div>
 		<!-- 作業登録・検索 -->
 		<table border="0" class="toolbar">
