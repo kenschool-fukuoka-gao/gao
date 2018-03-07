@@ -48,7 +48,7 @@
 					<table border="0">
 						<tr>
 							<td>検索キーワード</td>
-							<form action="./SearchResultService">
+							<form action="./SearchService" method="post">
 								<td><input type="text" name="keyword" value="" size="24"></td>
 								<td><input type="submit" value="検索" name="change"></td>
 							</form>
