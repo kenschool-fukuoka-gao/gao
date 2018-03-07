@@ -31,7 +31,7 @@
             stmt = con.createStatement();
             // SQL()を実行して、結果を得る
             rs = stmt.executeQuery(
-              "select siteName, responsible, deadLine, compDate from indexps join site using (siteId)");
+              "select siteName, responsible, deadLine, compDate from site");
             String employeeName = (String) session.getAttribute("employeeName");
 %>
 <h1>現場一覧</h1>
