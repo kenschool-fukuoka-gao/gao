@@ -27,19 +27,8 @@
         //SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         //String datestr = format.format(cal.getTime());
         try {
-            // JDBCドライバをロード
-            Class.forName("com.mysql.jdbc.Driver");
-            // データベースに接続するConnectionオブジェクトの取得
-            con = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/sample",
-                "root", "root");
-            // データベース操作を行うためのStatementオブジェクトの取得
-            stmt = con.createStatement();
-            // SQL()を実行して、結果を得る
-            rs = stmt.executeQuery(
-              "SELECT * FROM site WHERE siteName LIKE '%"+keyword+"%' OR responsible LIKE '%"+keyword+"%'");
 %>
-		<div>
+ 		<div>
 			<table border="0" class="list">
 				<tr>
 					<th>現場名</th>
@@ -48,6 +37,17 @@
 					<th>完了</th>
 				</tr>
 <%
+// JDBCドライバをロード
+Class.forName("com.mysql.jdbc.Driver");
+// データベースに接続するConnectionオブジェクトの取得
+con = DriverManager.getConnection(
+    "jdbc:mysql://localhost:3306/sample",
+    "root", "root");
+// データベース操作を行うためのStatementオブジェクトの取得
+stmt = con.createStatement();
+// SQL()を実行して、結果を得る
+rs = stmt.executeQuery(
+  "SELECT * FROM site WHERE siteName LIKE '%"+keyword+"%' OR responsible LIKE '%"+keyword+"%'");
 				// 得られた結果をレコードごとに表示
 						if(keyword != ""){
             while (rs.next()) {
