@@ -4,7 +4,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Iterator"%>
-<%@page import="model.IndexPSBean"%>
+<%@page import="model.SiteBean"%>
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -29,20 +29,19 @@
 				<td align="center" .rowspan="2"><input type="submit" value="詳細"></td>
 			</form>
 		</tr>
+
 		<%
-			ArrayList<IndexPSBean> list = (ArrayList<IndexPSBean>) request.getAttribute("list");
-			if (list != null) {
-				for (int i = 0; i < list.size(); i++) {
-					IndexPSBean indexPSBean = list.get(i);
+			List<SiteBean> list = (ArrayList<SiteBean>) request.getAttribute("list");
+			for (int i = 0; i < list.size(); i++) {
+				SiteBean siteBean = list.get(i);
 		%>
 		<tr>
-			<td><%=indexPSBean.getSiteId()%></td>
-			<td><%=indexPSBean.getResponsible()%></td>
-			<td><%=indexPSBean.getDateLine()%></td>
-			<td>×××</td>
+			<td><%=siteBean.getSiteName()%></td>
+			<td><%=siteBean.getResponsible()%></td>
+			<td><%=siteBean.getWorker()%></td>
+			<td><%=siteBean.getDeadLine()%></td>
 		</tr>
 		<%
-				}
 			}
 		%>
 	</table>

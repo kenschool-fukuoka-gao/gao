@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.IndexPSBean;
+import model.SiteBean;
 
 /**
  * Servlet implementation class SearchResultService
@@ -56,29 +56,29 @@ public class SearchService extends HttpServlet {
 		Connection con = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
-		ArrayList<IndexPSBean> list = new ArrayList<IndexPSBean>();
+		ArrayList<SiteBean> list = new ArrayList<SiteBean>();
 		try{
 	 		// JDBCドライバをロード
 	 		Class.forName("com.mysql.jdbc.Driver");
 	 		// データベースに接続するConnectionオブジェクトの取得
 	 		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sample","root","root");
 			//SQLの作成
-	 		String sql = "SELECT * FROM site INNER JOIN indexps USING (siteId) WHERE siteName LIKE '%"+keyword+"%'";
+	 		String sql = "SELECT * FROM site WHERE siteName LIKE '%"+keyword+"%'";
 
 	 		// データベース操作を行うためのStatementオブジェクトの取得
 	 		pst = con.prepareStatement(sql);
 	 		rs = pst.executeQuery();
 
 	 		while(rs.next()){
-	 			IndexPSBean indexPSBean = new IndexPSBean();
+	 			SiteBean siteBean = new SiteBean();
 
-	 			indexPSBean.setSiteId(rs.getString("siteId"));
-	 			indexPSBean.setResponsible(rs.getString("responsible"));
-	 			indexPSBean.setDateLine(rs.getString("dateLine"));
-	 			list.add(indexPSBean);
+	 			siteBean.setSiteName(rs.getString("siteName"));
+	 			siteBean.setResponsible(rs.getString("responsible"));
+	 			siteBean.setWorker(rs.getString("worker"));
+	 			siteBean.setDeadLine(rs.getString("dateLine"));
+	 			list.add(siteBean);
+
 	 		}
-
-
 
 			}catch(Exception e){
 				e.printStackTrace();
