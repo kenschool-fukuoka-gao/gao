@@ -89,7 +89,7 @@
 					}
 %>
 
-						<td><input type="submit" value="詳細" name="change"></td>
+						<td><a href="DetailList.jsp"><input type="submit" value="詳細" name="change"></a></td>
 				</tr>
 <%
             }

@@ -19,36 +19,36 @@
 				<form action="./RegistService" method="post">
 					<tr>
 						<th>現場名</th>
-						<td><input type="text" name="siteName" value="" size="24"></td>
+						<td><input type="text" name="siteName" size="24"></td>
 					</tr>
 					<tr>
 						<th>担当者</th>
-						<td><input type="text" name="responsible" value="" size="24"></td>
+						<td><input type="text" name="responsible" size="24"></td>
 					</tr>
 				<tr>
 					<th>作業者名</th>
-					<td><input type="text" name="worker" value="" placeholder="作業者名" size="12">
-					    <input type="text" name="name" value="" placeholder="作業者名" size="12">
-					    <input type="text" name="name" value="" placeholder="作業者名" size="12">
-					    <input type="text" name="name" value="" placeholder="作業者名" size="12">
-					    <input type="text" name="name" value="" placeholder="作業者名" size="12">
-					    <input type="text" name="name" value="" placeholder="作業者名" size="12">
+					<td><input type="text" name="worker1" placeholder="作業者名" size="12">
+					    <input type="text" name="worker2" value="" placeholder="作業者名" size="12">
+					    <input type="text" name="worker3" value="" placeholder="作業者名" size="12">
+					    <input type="text" name="worker4" value="" placeholder="作業者名" size="12">
+					    <input type="text" name="worker5" value="" placeholder="作業者名" size="12">
+					    <input type="text" name="worker6" value="" placeholder="作業者名" size="12">
 					    </td>
 				</tr>
 				<tr>
 					<th>期限</th>
 					<td>
-					<select name="year">
+					<select name="deadLineYear">
 							<% for(int i = 2018; i <= 2050; i++){%>
 								<option value="<%= i %>" ><%= i %></option>
 							<%} %>
 						</select>/
-					<select name="month">
+					<select name="deadLineMonth">
 						<% for(int i = 1; i <= 12; i++){ %>
 							<option value="<%= i %>" ><%= i %></option>
 						<%} %>
 					</select>/
-					<select name="day">
+					<select name="deadLineDay">
 						<% for(int i = 1; i <= 31; i++){ %>
 							<option value="<%= i %>" ><%= i %></option>
 						<%} %>
@@ -57,33 +57,33 @@
 				</tr>
 				<tr>
 					<th>作業日程</th>
-					<td><input type="text" name="processName" value="" placeholder="工程名">
-					<select name="year">
+					<td><input type="text" name="processName" placeholder="工程名">
+					<select name="startDateYear" value="startDateYear">
 							<% for(int i = 2018; i <= 2050; i++){%>
 								<option value="<%= i %>" ><%= i %></option>
 							<%} %>
 						</select>/
-					<select name="month">
+					<select name="startDateMonth">
 						<% for(int i = 1; i <= 12; i++){ %>
 							<option value="<%= i %>" ><%= i %></option>
 						<%} %>
 					</select>/
-					<select name="day">
+					<select name="startDateDay">
 						<% for(int i = 1; i <= 31; i++){ %>
 							<option value="<%= i %>" ><%= i %></option>
 						<%} %>
 					</select>～
-					<select name="year">
+					<select name="endDateYear">
 							<% for(int i = 2018; i <= 2050; i++){%>
 								<option value="<%= i %>" ><%= i %></option>
 							<%} %>
 						</select>/
-					<select name="month">
+					<select name="endDateMonth">
 						<% for(int i = 1; i <= 12; i++){ %>
 							<option value="<%= i %>" ><%= i %></option>
 						<%} %>
 					</select>/
-					<select name="day">
+					<select name="endDateDay">
 						<% for(int i = 1; i <= 31; i++){ %>
 							<option value="<%= i %>" ><%= i %></option>
 						<%} %>
@@ -91,187 +91,180 @@
 					</td>
 				</tr>
 				<tr>
-					<td></td>
-					<td><input type="text" value="" placeholder="工程名">
-					<select name="year">
+					<th>作業日程</th>
+					<td><input type="text" name="processName" placeholder="工程名">
+					<select name="startDateYear" value="startDateYear">
 							<% for(int i = 2018; i <= 2050; i++){%>
 								<option value="<%= i %>" ><%= i %></option>
 							<%} %>
 						</select>/
-					<select name="month">
+					<select name="startDateMonth">
 						<% for(int i = 1; i <= 12; i++){ %>
 							<option value="<%= i %>" ><%= i %></option>
 						<%} %>
 					</select>/
-					<select name="day">
+					<select name="startDateDay">
 						<% for(int i = 1; i <= 31; i++){ %>
 							<option value="<%= i %>" ><%= i %></option>
 						<%} %>
 					</select>～
-					<select name="year">
+					<select name="endDateYear">
 							<% for(int i = 2018; i <= 2050; i++){%>
 								<option value="<%= i %>" ><%= i %></option>
 							<%} %>
 						</select>/
-					<select name="month">
+					<select name="endDateMonth">
 						<% for(int i = 1; i <= 12; i++){ %>
 							<option value="<%= i %>" ><%= i %></option>
 						<%} %>
 					</select>/
-					<select name="day">
+					<select name="endDateDay">
+						<% for(int i = 1; i <= 31; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>
+					</td>
+				</tr><tr>
+					<th>作業日程</th>
+					<td><input type="text" name="processName" placeholder="工程名">
+					<select name="startDateYear" value="startDateYear">
+							<% for(int i = 2018; i <= 2050; i++){%>
+								<option value="<%= i %>" ><%= i %></option>
+							<%} %>
+						</select>/
+					<select name="startDateMonth">
+						<% for(int i = 1; i <= 12; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>/
+					<select name="startDateDay">
+						<% for(int i = 1; i <= 31; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>～
+					<select name="endDateYear">
+							<% for(int i = 2018; i <= 2050; i++){%>
+								<option value="<%= i %>" ><%= i %></option>
+							<%} %>
+						</select>/
+					<select name="endDateMonth">
+						<% for(int i = 1; i <= 12; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>/
+					<select name="endDateDay">
+						<% for(int i = 1; i <= 31; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>
+					</td>
+				</tr><tr>
+					<th>作業日程</th>
+					<td><input type="text" name="processName" placeholder="工程名">
+					<select name="startDateYear" value="startDateYear">
+							<% for(int i = 2018; i <= 2050; i++){%>
+								<option value="<%= i %>" ><%= i %></option>
+							<%} %>
+						</select>/
+					<select name="startDateMonth">
+						<% for(int i = 1; i <= 12; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>/
+					<select name="startDateDay">
+						<% for(int i = 1; i <= 31; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>～
+					<select name="endDateYear">
+							<% for(int i = 2018; i <= 2050; i++){%>
+								<option value="<%= i %>" ><%= i %></option>
+							<%} %>
+						</select>/
+					<select name="endDateMonth">
+						<% for(int i = 1; i <= 12; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>/
+					<select name="endDateDay">
+						<% for(int i = 1; i <= 31; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>
+					</td>
+				</tr><tr>
+					<th>作業日程</th>
+					<td><input type="text" name="processName" placeholder="工程名">
+					<select name="startDateYear" value="startDateYear">
+							<% for(int i = 2018; i <= 2050; i++){%>
+								<option value="<%= i %>" ><%= i %></option>
+							<%} %>
+						</select>/
+					<select name="startDateMonth">
+						<% for(int i = 1; i <= 12; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>/
+					<select name="startDateDay">
+						<% for(int i = 1; i <= 31; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>～
+					<select name="endDateYear">
+							<% for(int i = 2018; i <= 2050; i++){%>
+								<option value="<%= i %>" ><%= i %></option>
+							<%} %>
+						</select>/
+					<select name="endDateMonth">
+						<% for(int i = 1; i <= 12; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>/
+					<select name="endDateDay">
+						<% for(int i = 1; i <= 31; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>
+					</td>
+				</tr><tr>
+					<th>作業日程</th>
+					<td><input type="text" name="processName" placeholder="工程名">
+					<select name="startDateYear" value="startDateYear">
+							<% for(int i = 2018; i <= 2050; i++){%>
+								<option value="<%= i %>" ><%= i %></option>
+							<%} %>
+						</select>/
+					<select name="startDateMonth">
+						<% for(int i = 1; i <= 12; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>/
+					<select name="startDateDay">
+						<% for(int i = 1; i <= 31; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>～
+					<select name="endDateYear">
+							<% for(int i = 2018; i <= 2050; i++){%>
+								<option value="<%= i %>" ><%= i %></option>
+							<%} %>
+						</select>/
+					<select name="endDateMonth">
+						<% for(int i = 1; i <= 12; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>/
+					<select name="endDateDay">
 						<% for(int i = 1; i <= 31; i++){ %>
 							<option value="<%= i %>" ><%= i %></option>
 						<%} %>
 					</select>
 					</td>
 				</tr>
-				<tr>
-					<td></td>
-					<td><input type="text" value="" placeholder="工程名">
-					<select name="year">
-							<% for(int i = 2018; i <= 2050; i++){%>
-								<option value="<%= i %>" ><%= i %></option>
-							<%} %>
-						</select>/
-					<select name="month">
-						<% for(int i = 1; i <= 12; i++){ %>
-							<option value="<%= i %>" ><%= i %></option>
-						<%} %>
-					</select>/
-					<select name="day">
-						<% for(int i = 1; i <= 31; i++){ %>
-							<option value="<%= i %>" ><%= i %></option>
-						<%} %>
-					</select>～
-					<select name="year">
-							<% for(int i = 2018; i <= 2050; i++){%>
-								<option value="<%= i %>" ><%= i %></option>
-							<%} %>
-						</select>/
-					<select name="month">
-						<% for(int i = 1; i <= 12; i++){ %>
-							<option value="<%= i %>" ><%= i %></option>
-						<%} %>
-					</select>/
-					<select name="day">
-						<% for(int i = 1; i <= 31; i++){ %>
-							<option value="<%= i %>" ><%= i %></option>
-						<%} %>
-					</select>
-					</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td><input type="text" value="" placeholder="工程名">
-					<select name="year">
-							<% for(int i = 2018; i <= 2050; i++){%>
-								<option value="<%= i %>" ><%= i %></option>
-							<%} %>
-						</select>/
-					<select name="month">
-						<% for(int i = 1; i <= 12; i++){ %>
-							<option value="<%= i %>" ><%= i %></option>
-						<%} %>
-					</select>/
-					<select name="day">
-						<% for(int i = 1; i <= 31; i++){ %>
-							<option value="<%= i %>" ><%= i %></option>
-						<%} %>
-					</select>～
-					<select name="year">
-							<% for(int i = 2018; i <= 2050; i++){%>
-								<option value="<%= i %>" ><%= i %></option>
-							<%} %>
-						</select>/
-					<select name="month">
-						<% for(int i = 1; i <= 12; i++){ %>
-							<option value="<%= i %>" ><%= i %></option>
-						<%} %>
-					</select>/
-					<select name="day">
-						<% for(int i = 1; i <= 31; i++){ %>
-							<option value="<%= i %>" ><%= i %></option>
-						<%} %>
-					</select>
-					</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td><input type="text" value="" placeholder="工程名">
-					<select name="year">
-							<% for(int i = 2018; i <= 2050; i++){%>
-								<option value="<%= i %>" ><%= i %></option>
-							<%} %>
-						</select>/
-					<select name="month">
-						<% for(int i = 1; i <= 12; i++){ %>
-							<option value="<%= i %>" ><%= i %></option>
-						<%} %>
-					</select>/
-					<select name="day">
-						<% for(int i = 1; i <= 31; i++){ %>
-							<option value="<%= i %>" ><%= i %></option>
-						<%} %>
-					</select>～
-					<select name="year">
-							<% for(int i = 2018; i <= 2050; i++){%>
-								<option value="<%= i %>" ><%= i %></option>
-							<%} %>
-						</select>/
-					<select name="month">
-						<% for(int i = 1; i <= 12; i++){ %>
-							<option value="<%= i %>" ><%= i %></option>
-						<%} %>
-					</select>/
-					<select name="day">
-						<% for(int i = 1; i <= 31; i++){ %>
-							<option value="<%= i %>" ><%= i %></option>
-						<%} %>
-					</select>
-					</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td><input type="text" value="" placeholder="工程名">
-					<select name="year">
-							<% for(int i = 2018; i <= 2050; i++){%>
-								<option value="<%= i %>" ><%= i %></option>
-							<%} %>
-						</select>/
-					<select name="month">
-						<% for(int i = 1; i <= 12; i++){ %>
-							<option value="<%= i %>" ><%= i %></option>
-						<%} %>
-					</select>/
-					<select name="day">
-						<% for(int i = 1; i <= 31; i++){ %>
-							<option value="<%= i %>" ><%= i %></option>
-						<%} %>
-					</select>～
-					<select name="year">
-							<% for(int i = 2018; i <= 2050; i++){%>
-								<option value="<%= i %>" ><%= i %></option>
-							<%} %>
-						</select>/
-					<select name="month">
-						<% for(int i = 1; i <= 12; i++){ %>
-							<option value="<%= i %>" ><%= i %></option>
-						<%} %>
-					</select>/
-					<select name="day">
-						<% for(int i = 1; i <= 31; i++){ %>
-							<option value="<%= i %>" ><%= i %></option>
-						<%} %>
-					</select>
-					</td>
-				</tr>
-
-
 			</table>
-
 			<table border="0">
 				<tr>
-					<td><input type="submit" value="登録"></td>
+					<td><input type="submit" value="登録" method="post"></td>
 					</form>
 					<form action="List.jsp">
 						<td><input type="submit" value="キャンセル"></td>
