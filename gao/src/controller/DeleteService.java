@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class DeleteService
  */
-@WebServlet("/Delete")
+@WebServlet("/DeleteService")
 public class DeleteService extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -34,11 +35,16 @@ public class DeleteService extends HttpServlet {
 		// エンコード設定.
     	request.setCharacterEncoding( "UTF-8" );
 
+    	//画面から現場IDを取得する
     	int num = 0;
-		if(request.getParameter("num") != null){
-			num = Integer.parseInt(request.getParameter("num"));
+    	/*
+		if(request.getParameter("siteId") != null){
+			num = Integer.parseInt(request.getParameter("siteId"));
 		}
+		*/
 
+		//テスト
+		num = 13;
 		// エンコード設定.
     	request.setCharacterEncoding( "UTF-8" );
 		//データベースへのアクセス開始
@@ -51,13 +57,15 @@ public class DeleteService extends HttpServlet {
 	 		// データベースに接続するConnectionオブジェクトの取得
 	 		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sample","root","root");
 			//SQLの作成
-	 		String sql = "DELETE FROM indexps WHERE siteId = ?";
+	 		String sql = "DELETE FROM site WHERE siteId = ?";
 	 		// データベース操作を行うためのStatementオブジェクトの取得
 	 		pst = con.prepareStatement(sql);
-	 		//pst.setInt(1,num);
+	 		pst.setInt(1,num);
 	 		pst.executeUpdate();
 
-
+	 		//画面遷移
+	 		RequestDispatcher rd = request.getRequestDispatcher("List.jsp");
+			rd.forward(request, response);
 
 			}catch(Exception e){
 				e.printStackTrace();
