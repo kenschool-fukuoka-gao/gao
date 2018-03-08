@@ -3,7 +3,7 @@ package model;
 public class SiteBean {
 
 	private int siteId;
-	private String processName;
+	private String siteName;
 	private String responsible;
 	private String worker;
 	private String deadLine;
@@ -15,11 +15,11 @@ public class SiteBean {
 	public void setSiteId(int siteId){
 		this.siteId = siteId;
 	}
-	public String getProcessName(){
-		return processName;
+	public String getSiteName(){
+		return siteName;
 	}
-	public void setProcessName(String processName){
-		this.processName = processName;
+	public void setSiteName(String siteName){
+		this.siteName = siteName;
 	}
 	public String getResponsible(){
 		return responsible;
