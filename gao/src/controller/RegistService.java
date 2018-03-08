@@ -88,6 +88,7 @@ public class RegistService extends HttpServlet {
             try { con2.close(); } catch (Exception e) {}
          // リストページへ遷移(リダイレクト).
     		response.sendRedirect("./List.jsp");
+
         }
     }
 }
