@@ -2,19 +2,42 @@ package model;
 
 public class SiteBean {
 
-	private String siteId;
-	private String siteName;
+	private int siteId;
+	private String processName;
+	private String responsible;
+	private String worker;
+	private String deadLine;
+	//private String siteName;
 
-	public String getSiteId(){
+	public int getSiteId(){
 		return siteId;
 	}
-	public void setSiteId(String siteName){
-		this.siteName = siteName;
+	public void setSiteId(int siteId){
+		this.siteId = siteId;
 	}
-	public String getSiteName(){
-		return siteName;
+	public String getProcessName(){
+		return processName;
 	}
-	public void setSiteName(String siteName){
-		this.siteName = siteName;
+	public void setProcessName(String processName){
+		this.processName = processName;
 	}
+	public String getResponsible(){
+		return responsible;
+	}
+	public void setResponsible(String responsible){
+		this.responsible = responsible;
+	}
+	public String getWorker(){
+		return worker;
+	}
+	public void setWorker(String worker){
+		this.worker = worker;
+	}
+	public String getDeadLine(){
+		return deadLine;
+	}
+	public void setDeadLine(String deadLine){
+		this.deadLine = deadLine;
+	}
+
 }

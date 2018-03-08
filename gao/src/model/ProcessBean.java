@@ -2,13 +2,15 @@ package model;
 
 public class ProcessBean {
 
-	private String processId;
+	private int processId;
 	private String processName;
+	private String startDate;
+	private String endDate;
 
-	public String getProcessId(){
+	public int getProcessId(){
 		return processId;
 	}
-	public void setProcessId(String processId){
+	public void setProcessId(int processId){
 		this.processId = processId;
 	}
 	public String getProcessName(){
@@ -16,5 +18,17 @@ public class ProcessBean {
 	}
 	public void setProcessName(String processName){
 		this.processName = processName;
+	}
+	public String getStartDate(){
+		return startDate;
+	}
+	public void setStartDate(String startDate){
+		this.startDate = startDate;
+	}
+	public String getEndDate(){
+		return endDate;
+	}
+	public void setEndDate(String endDate){
+		this.endDate = endDate;
 	}
 }
