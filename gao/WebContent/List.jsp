@@ -48,7 +48,7 @@
 					<table border="0">
 						<tr>
 							<td>検索キーワード</td>
-							<form action="./SearchService" method="post">
+							<form action="Search.jsp">
 								<td><input type="text" name="keyword" value="" size="24"></td>
 								<td><input type="submit" value="検索" name="change"></td>
 							</form>
@@ -64,7 +64,6 @@
 					<th>担当者</th>
 					<th>期限</th>
 					<th>完了</th>
-					<form action="DetailList.jsp">
 				</tr>
 <%
 				// 得られた結果をレコードごとに表示
