@@ -44,7 +44,7 @@ public class DeleteService extends HttpServlet {
 		*/
 
 		//テスト
-		num = 13;
+		num = 5;
 		// エンコード設定.
     	request.setCharacterEncoding( "UTF-8" );
 		//データベースへのアクセス開始

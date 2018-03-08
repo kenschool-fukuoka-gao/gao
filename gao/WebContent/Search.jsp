@@ -49,7 +49,7 @@ stmt = con.createStatement();
 rs = stmt.executeQuery(
   "SELECT * FROM site WHERE siteName LIKE '%"+keyword+"%' OR responsible LIKE '%"+keyword+"%'");
 				// 得られた結果をレコードごとに表示
-						if(keyword != ""){
+		if(keyword != ""){
             while (rs.next()) {
 %>
 				<tr>
@@ -76,7 +76,17 @@ rs = stmt.executeQuery(
 				</tr>
 <%
             }
-						}
+		}
+%>
+						<table border="0">
+			<tr>
+				<form action="List.jsp">
+					<td><input type="submit" value="戻る"></td>
+				</form>
+			</tr>
+		</table>
+
+<%
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
