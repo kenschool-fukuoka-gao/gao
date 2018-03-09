@@ -28,7 +28,7 @@
 		// データベース操作を行うためのStatementオブジェクトの取得
 		stmt = con.createStatement();
 		// SQL()を実行して、結果を得る
-		rs = stmt.executeQuery("select siteName, responsible, deadLine, compDate from site");
+		rs = stmt.executeQuery("select siteId, siteName, responsible, deadLine, compDate from site");
 		String employeeName = (String) session.getAttribute("employeeName");
 %>
 <h1>現場一覧</h1>
@@ -86,7 +86,7 @@
 <%
 			}
 %>
-				<td><a href="./DetailListService" method="post"><input type="submit" value="詳細" name="change"></a></td>
+				<td><a href="./DetailListService?siteId=<%= rs.getString("siteId")%>" method="post"><input type="submit" value="詳細" name="change"></a></td>
 			</tr>
 <%
 		}
