@@ -40,8 +40,7 @@ public class DetailListService extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request, response);
 	}
 
 	/**
@@ -114,7 +113,7 @@ public class DetailListService extends HttpServlet {
 
 
 	 		//画面遷移
-	 		RequestDispatcher rd = request.getRequestDispatcher("/DetailList.jsp");
+	 		RequestDispatcher rd = request.getRequestDispatcher("./DetailList.jsp");
 			rd.forward(request, response);
 
 			}catch(Exception e){
