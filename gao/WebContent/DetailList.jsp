@@ -64,7 +64,6 @@
 			} while (cal1.before(cal2));
 		%>
 
-
 		<table>
 			<tr>
 				<td>
