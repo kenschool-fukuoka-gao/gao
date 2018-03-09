@@ -100,11 +100,7 @@ public class RegistService extends HttpServlet {
 		String endDateMonth6 = request.getParameter("endDateMonth6");
 		String endDateDay6 = request.getParameter("endDateDay6");
 		String endDate6 = endDateYear6 + "-" + endDateMonth6 + "-" + endDateDay6;
-		String check = request.getParameter("check");
-		String finish = null;
 
-		if(check != null){
-		}
 		// データベースへのアクセス開始
         Connection con = null;
         Statement stmt = null;
@@ -119,8 +115,8 @@ public class RegistService extends HttpServlet {
             stmt = con.createStatement();
 	        //SQL文
 	        //メッセージ情報を挿入
-	       String sql =
-	                "INSERT INTO site (siteName, responsible, worker, deadLine, compDate)" + "VALUES ('"+siteName+"', '"+responsible+"', '"+worker+"', '"+deadLine+"', '"+finish+"')";
+	        String sql =
+	                "INSERT INTO site (siteName, responsible, worker, deadLine)" + "VALUES ('"+siteName+"', '"+responsible+"', '"+worker+"', '"+deadLine+"')";
 	        String sql2 =
 	                "INSERT INTO process (processName, startDate, endDate)" + "VALUES ('"+processName1+"', '"+startDate1+"', '"+endDate1+"')";
 	        String sql3 =

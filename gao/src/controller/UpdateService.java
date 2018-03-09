@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
@@ -103,12 +103,18 @@ public class UpdateService extends HttpServlet {
 		String endDateDay6 = request.getParameter("endDateDay6");
 		String endDate6 = endDateYear6 + "-" + endDateMonth6 + "-" + endDateDay6;
 		String check = request.getParameter("check");
-		String finish = "";
+		java.sql.Date compDate= null;
+		String sql = null;
 
-		if(check.equals(1)){
-			Date d = new Date();
-			SimpleDateFormat d1 = new SimpleDateFormat("yyyy-MM-dd");
-			finish = d1.format(d);
+		if(check != null){
+			Date date = new Date();
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(date);
+			cal.set(Calendar.HOUR_OF_DAY, 0);
+			cal.set(Calendar.MINUTE, 0);
+			cal.set(Calendar.SECOND, 0);
+			cal.set(Calendar.MILLISECOND, 0);
+			compDate = new java.sql.Date(date.getTime());
 		}
 
 		// データベースへのアクセス開始
@@ -125,9 +131,15 @@ public class UpdateService extends HttpServlet {
             stmt = con.createStatement();
 	        //SQL文
 	        //メッセージ情報を挿入
-	        String sql =
-	                "INSERT INTO site (siteName, responsible, worker, deadLine, compDate)" + "VALUES ('"+siteName+"', '"+responsible+"', '"+worker+"', '"+deadLine+"', '"+finish+"')";
-	        String sql2 =
+            if(check == null){
+                sql =
+    	                "INSERT INTO site (siteName, responsible, worker, deadLine)" + "VALUES ('"+siteName+"', '"+responsible+"', '"+worker+"', '"+deadLine+"')";
+                }
+                else{
+                	sql =
+        	                "INSERT INTO site (siteName, responsible, worker, deadLine, compDate)" + "VALUES ('"+siteName+"', '"+responsible+"', '"+worker+"', '"+deadLine+"', '"+compDate+"')";
+                }
+            String sql2 =
 	                "INSERT INTO process (processName, startDate, endDate)" + "VALUES ('"+processName1+"', '"+startDate1+"', '"+endDate1+"')";
 	        String sql3 =
 	                "INSERT INTO process (processName, startDate, endDate)" + "VALUES ('"+processName2+"', '"+startDate2+"', '"+endDate2+"')";

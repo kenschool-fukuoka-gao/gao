@@ -9,9 +9,6 @@
 <link rel="STYLESHEET" href="main.css" type="text/css">
 </head>
 <body>
-<%
-
-%>
 <h1>作業登録</h1>
 	<hr>
 		<div align="center">
@@ -261,10 +258,6 @@
 					</select>
 					</td>
 				</tr>
-				<tr>
-						<th class="add_field">完了</th>
-						<td class="add_field"><input type="checkbox" name="check" value="1" size="8">完了した </td>
-					</tr>
 			</table>
 			<table border="0">
 				<tr>
