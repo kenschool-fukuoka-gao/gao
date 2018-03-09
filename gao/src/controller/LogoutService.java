@@ -28,11 +28,15 @@ public class LogoutService extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// セッション破棄.
-		HttpSession session = request.getSession(true);
-		session.invalidate();
-		session = request.getSession(false);
-		// ログインフォームへ遷移(リダイレクト).
-		response.sendRedirect("./Login.jsp");
+		try{
+			// セッション破棄.
+			HttpSession session = request.getSession(true);
+			session.invalidate();
+			session = request.getSession(false);
+			// ログインフォームへ遷移(リダイレクト).
+			response.sendRedirect("./Login.jsp");
+		}catch(Exception e){
+			response.sendRedirect("./Error.jsp");
+		}
 	}
 }
