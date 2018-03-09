@@ -13,788 +13,258 @@
 	<hr>
 		<div align="center">
 			<table border="0">
-				<form action="DetailList.jsp">
+				<form action="./UpdateService" method="post">
 					<tr>
-						<th class="add_field">お客様名</th>
-						<td class="add_field"><input type="text" name="name" value=""
-							size="24"></td>
+						<th>現場名</th>
+						<td><input type="text" name="siteName" size="24"></td>
 					</tr>
 					<tr>
-						<th class="add_field">担当者</th>
-						<td class="add_field"><select name="user_id" size="1">
-								<option value="user1_id" selected>ユーザ1</option>
-								<option value="user2_id">ユーザ2</option>
-						</select></td>
+						<th>担当者</th>
+						<td><input type="text" name="responsible" size="24"></td>
 					</tr>
-					<tr>
-						<th class="add_field">期限</th>
-						<td >
-						<select name="year">
-							<option value="2018" >2018</option>
-							<option value="2019" >2019</option>
-							<option value="2020" >2020</option>
-							<option value="2021" >2021</option>
-							<option value="2022" >2022</option>
-							<option value="2023" >2023</option>
-							</select>/
-					<select name="month">
-							<option value="1" >1</option>
-							<option value="2" >2</option>
-							<option value="3" >3</option>
-							<option value="4" >4</option>
-							<option value="5" >5</option>
-							<option value="6" >6</option>
-							<option value="7" >8</option>
-							<option value="8" >8</option>
-							<option value="9" >9</option>
-							<option value="10" >10</option>
-							<option value="11" >11</option>
-							<option value="12" >12</option>
-							</select>/
-					<select name="day">
-							<option value="1" >1</option>
-							<option value="2" >2</option>
-							<option value="3" >3</option>
-							<option value="4" >4</option>
-							<option value="5" >5</option>
-							<option value="6" >6</option>
-							<option value="7" >8</option>
-							<option value="8" >8</option>
-							<option value="9" >9</option>
-							<option value="10" >10</option>
-							<option value="11" >11</option>
-							<option value="12" >12</option>
-							<option value="13" >13</option>
-							<option value="14" >14</option>
-							<option value="15" >15</option>
-							<option value="16" >16</option>
-							<option value="17" >17</option>
-							<option value="18" >18</option>
-							<option value="19" >19</option>
-							<option value="20" >20</option>
-							<option value="21" >21</option>
-							<option value="22" >22</option>
-							<option value="23" >23</option>
-							<option value="24" >24</option>
-							<option value="25" >25</option>
-							<option value="26" >26</option>
-							<option value="27" >27</option>
-							<option value="28" >28</option>
-							<option value="29" >29</option>
-							<option value="30" >30</option>
-							<option value="31" >31</option>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<th>作業者名</th>
-						<td><input type="text" name="name" value="" placeholder="作業者名" size="12">
-							<input type="text" name="name" value="" placeholder="作業者名" size="12">
-							<input type="text" name="name" value="" placeholder="作業者名" size="12">
-							<input type="text" name="name" value="" placeholder="作業者名" size="12">
-							<input type="text" name="name" value="" placeholder="作業者名" size="12">
-							<input type="text" name="name" value="" placeholder="作業者名" size="12"></input></td>
-					</tr>
-					<tr>
-						<th>作業日程</th>
-						<td>
-						<input type="text" value="" placeholder="工程名">
-						<select name="year">
-							<option value="2018" >2018</option>
-							<option value="2019" >2019</option>
-							<option value="2020" >2020</option>
-							<option value="2021" >2021</option>
-							<option value="2022" >2022</option>
-							<option value="2023" >2023</option>
-							</select>/
-							<select name="month">
-							<option value="1" >1</option>
-							<option value="2" >2</option>
-							<option value="3" >3</option>
-							<option value="4" >4</option>
-							<option value="5" >5</option>
-							<option value="6" >6</option>
-							<option value="7" >8</option>
-							<option value="8" >8</option>
-							<option value="9" >9</option>
-							<option value="10" >10</option>
-							<option value="11" >11</option>
-							<option value="12" >12</option>
-							</select>/
-							<select name="day">
-							<option value="1" >1</option>
-							<option value="2" >2</option>
-							<option value="3" >3</option>
-							<option value="4" >4</option>
-							<option value="5" >5</option>
-							<option value="6" >6</option>
-							<option value="7" >8</option>
-							<option value="8" >8</option>
-							<option value="9" >9</option>
-							<option value="10" >10</option>
-							<option value="11" >11</option>
-							<option value="12" >12</option>
-							<option value="13" >13</option>
-							<option value="14" >14</option>
-							<option value="15" >15</option>
-							<option value="16" >16</option>
-							<option value="17" >17</option>
-							<option value="18" >18</option>
-							<option value="19" >19</option>
-							<option value="20" >20</option>
-							<option value="21" >21</option>
-							<option value="22" >22</option>
-							<option value="23" >23</option>
-							<option value="24" >24</option>
-							<option value="25" >25</option>
-							<option value="26" >26</option>
-							<option value="27" >27</option>
-							<option value="28" >28</option>
-							<option value="29" >29</option>
-							<option value="30" >30</option>
-							<option value="31" >31</option>
-							</select>～
-							<select name="year">
-							<option value="2018" >2018</option>
-							<option value="2019" >2019</option>
-							<option value="2020" >2020</option>
-							<option value="2021" >2021</option>
-							<option value="2022" >2022</option>
-							<option value="2023" >2023</option>
-							</select>/
-							<select name="month">
-							<option value="1" >1</option>
-							<option value="2" >2</option>
-							<option value="3" >3</option>
-							<option value="4" >4</option>
-							<option value="5" >5</option>
-							<option value="6" >6</option>
-							<option value="7" >8</option>
-							<option value="8" >8</option>
-							<option value="9" >9</option>
-							<option value="10" >10</option>
-							<option value="11" >11</option>
-							<option value="12" >12</option>
-							</select>/
-							<select name="day">
-							<option value="1" >1</option>
-							<option value="2" >2</option>
-							<option value="3" >3</option>
-							<option value="4" >4</option>
-							<option value="5" >5</option>
-							<option value="6" >6</option>
-							<option value="7" >8</option>
-							<option value="8" >8</option>
-							<option value="9" >9</option>
-							<option value="10" >10</option>
-							<option value="11" >11</option>
-							<option value="12" >12</option>
-							<option value="13" >13</option>
-							<option value="14" >14</option>
-							<option value="15" >15</option>
-							<option value="16" >16</option>
-							<option value="17" >17</option>
-							<option value="18" >18</option>
-							<option value="19" >19</option>
-							<option value="20" >20</option>
-							<option value="21" >21</option>
-							<option value="22" >22</option>
-							<option value="23" >23</option>
-							<option value="24" >24</option>
-							<option value="25" >25</option>
-							<option value="26" >26</option>
-							<option value="27" >27</option>
-							<option value="28" >28</option>
-							<option value="29" >29</option>
-							<option value="30" >30</option>
-							<option value="31" >31</option>
-
-					<tr>
-						<td></td>
-						<td><input type="text" value="" placeholder="工程名">
-						<select name="year">
-							<option value="2018" >2018</option>
-							<option value="2019" >2019</option>
-							<option value="2020" >2020</option>
-							<option value="2021" >2021</option>
-							<option value="2022" >2022</option>
-							<option value="2023" >2023</option>
-							</select>/
-							<select name="month">
-							<option value="1" >1</option>
-							<option value="2" >2</option>
-							<option value="3" >3</option>
-							<option value="4" >4</option>
-							<option value="5" >5</option>
-							<option value="6" >6</option>
-							<option value="7" >8</option>
-							<option value="8" >8</option>
-							<option value="9" >9</option>
-							<option value="10" >10</option>
-							<option value="11" >11</option>
-							<option value="12" >12</option>
-							</select>/
-							<select name="day">
-							<option value="1" >1</option>
-							<option value="2" >2</option>
-							<option value="3" >3</option>
-							<option value="4" >4</option>
-							<option value="5" >5</option>
-							<option value="6" >6</option>
-							<option value="7" >8</option>
-							<option value="8" >8</option>
-							<option value="9" >9</option>
-							<option value="10" >10</option>
-							<option value="11" >11</option>
-							<option value="12" >12</option>
-							<option value="13" >13</option>
-							<option value="14" >14</option>
-							<option value="15" >15</option>
-							<option value="16" >16</option>
-							<option value="17" >17</option>
-							<option value="18" >18</option>
-							<option value="19" >19</option>
-							<option value="20" >20</option>
-							<option value="21" >21</option>
-							<option value="22" >22</option>
-							<option value="23" >23</option>
-							<option value="24" >24</option>
-							<option value="25" >25</option>
-							<option value="26" >26</option>
-							<option value="27" >27</option>
-							<option value="28" >28</option>
-							<option value="29" >29</option>
-							<option value="30" >30</option>
-							<option value="31" >31</option>
-							</select>～
-					<select name="year">
-							<option value="2018" >2018</option>
-							<option value="2019" >2019</option>
-							<option value="2020" >2020</option>
-							<option value="2021" >2021</option>
-							<option value="2022" >2022</option>
-							<option value="2023" >2023</option>
-							</select>/
-					<select name="month">
-							<option value="1" >1</option>
-							<option value="2" >2</option>
-							<option value="3" >3</option>
-							<option value="4" >4</option>
-							<option value="5" >5</option>
-							<option value="6" >6</option>
-							<option value="7" >8</option>
-							<option value="8" >8</option>
-							<option value="9" >9</option>
-							<option value="10" >10</option>
-							<option value="11" >11</option>
-							<option value="12" >12</option>
-							</select>/
-					<select name="day">
-							<option value="1" >1</option>
-							<option value="2" >2</option>
-							<option value="3" >3</option>
-							<option value="4" >4</option>
-							<option value="5" >5</option>
-							<option value="6" >6</option>
-							<option value="7" >8</option>
-							<option value="8" >8</option>
-							<option value="9" >9</option>
-							<option value="10" >10</option>
-							<option value="11" >11</option>
-							<option value="12" >12</option>
-							<option value="13" >13</option>
-							<option value="14" >14</option>
-							<option value="15" >15</option>
-							<option value="16" >16</option>
-							<option value="17" >17</option>
-							<option value="18" >18</option>
-							<option value="19" >19</option>
-							<option value="20" >20</option>
-							<option value="21" >21</option>
-							<option value="22" >22</option>
-							<option value="23" >23</option>
-							<option value="24" >24</option>
-							<option value="25" >25</option>
-							<option value="26" >26</option>
-							<option value="27" >27</option>
-							<option value="28" >28</option>
-							<option value="29" >29</option>
-							<option value="30" >30</option>
-							<option value="31" >31</option>
-							</select>
-					</tr>
-					<tr>
-						<td></td>
-						<td><input type="text" value="" placeholder="工程名">
-						<select name="year">
-							<option value="2018" >2018</option>
-							<option value="2019" >2019</option>
-							<option value="2020" >2020</option>
-							<option value="2021" >2021</option>
-							<option value="2022" >2022</option>
-							<option value="2023" >2023</option>
-							</select>/
-					<select name="month">
-							<option value="1" >1</option>
-							<option value="2" >2</option>
-							<option value="3" >3</option>
-							<option value="4" >4</option>
-							<option value="5" >5</option>
-							<option value="6" >6</option>
-							<option value="7" >8</option>
-							<option value="8" >8</option>
-							<option value="9" >9</option>
-							<option value="10" >10</option>
-							<option value="11" >11</option>
-							<option value="12" >12</option>
-							</select>/
-					<select name="day">
-							<option value="1" >1</option>
-							<option value="2" >2</option>
-							<option value="3" >3</option>
-							<option value="4" >4</option>
-							<option value="5" >5</option>
-							<option value="6" >6</option>
-							<option value="7" >8</option>
-							<option value="8" >8</option>
-							<option value="9" >9</option>
-							<option value="10" >10</option>
-							<option value="11" >11</option>
-							<option value="12" >12</option>
-							<option value="13" >13</option>
-							<option value="14" >14</option>
-							<option value="15" >15</option>
-							<option value="16" >16</option>
-							<option value="17" >17</option>
-							<option value="18" >18</option>
-							<option value="19" >19</option>
-							<option value="20" >20</option>
-							<option value="21" >21</option>
-							<option value="22" >22</option>
-							<option value="23" >23</option>
-							<option value="24" >24</option>
-							<option value="25" >25</option>
-							<option value="26" >26</option>
-							<option value="27" >27</option>
-							<option value="28" >28</option>
-							<option value="29" >29</option>
-							<option value="30" >30</option>
-							<option value="31" >31</option></select>～
-							<select name="year">
-							<option value="2018" >2018</option>
-							<option value="2019" >2019</option>
-							<option value="2020" >2020</option>
-							<option value="2021" >2021</option>
-							<option value="2022" >2022</option>
-							<option value="2023" >2023</option>
-							</select>/
-					<select name="month">
-							<option value="1" >1</option>
-							<option value="2" >2</option>
-							<option value="3" >3</option>
-							<option value="4" >4</option>
-							<option value="5" >5</option>
-							<option value="6" >6</option>
-							<option value="7" >8</option>
-							<option value="8" >8</option>
-							<option value="9" >9</option>
-							<option value="10" >10</option>
-							<option value="11" >11</option>
-							<option value="12" >12</option>
-							</select>/
-					<select name="day">
-							<option value="1" >1</option>
-							<option value="2" >2</option>
-							<option value="3" >3</option>
-							<option value="4" >4</option>
-							<option value="5" >5</option>
-							<option value="6" >6</option>
-							<option value="7" >8</option>
-							<option value="8" >8</option>
-							<option value="9" >9</option>
-							<option value="10" >10</option>
-							<option value="11" >11</option>
-							<option value="12" >12</option>
-							<option value="13" >13</option>
-							<option value="14" >14</option>
-							<option value="15" >15</option>
-							<option value="16" >16</option>
-							<option value="17" >17</option>
-							<option value="18" >18</option>
-							<option value="19" >19</option>
-							<option value="20" >20</option>
-							<option value="21" >21</option>
-							<option value="22" >22</option>
-							<option value="23" >23</option>
-							<option value="24" >24</option>
-							<option value="25" >25</option>
-							<option value="26" >26</option>
-							<option value="27" >27</option>
-							<option value="28" >28</option>
-							<option value="29" >29</option>
-							<option value="30" >30</option>
-							<option value="31" >31</option>
-							</select>
-					</tr>
-					<tr>
-					<td></td>
-					<td><input type="text" value="" placeholder="工程名">
-					<select name="year">
-							<option value="2018" >2018</option>
-							<option value="2019" >2019</option>
-							<option value="2020" >2020</option>
-							<option value="2021" >2021</option>
-							<option value="2022" >2022</option>
-							<option value="2023" >2023</option>
-							</select>/
-					<select name="month">
-							<option value="1" >1</option>
-							<option value="2" >2</option>
-							<option value="3" >3</option>
-							<option value="4" >4</option>
-							<option value="5" >5</option>
-							<option value="6" >6</option>
-							<option value="7" >8</option>
-							<option value="8" >8</option>
-							<option value="9" >9</option>
-							<option value="10" >10</option>
-							<option value="11" >11</option>
-							<option value="12" >12</option>
-							</select>/
-					<select name="day">
-							<option value="1" >1</option>
-							<option value="2" >2</option>
-							<option value="3" >3</option>
-							<option value="4" >4</option>
-							<option value="5" >5</option>
-							<option value="6" >6</option>
-							<option value="7" >8</option>
-							<option value="8" >8</option>
-							<option value="9" >9</option>
-							<option value="10" >10</option>
-							<option value="11" >11</option>
-							<option value="12" >12</option>
-							<option value="13" >13</option>
-							<option value="14" >14</option>
-							<option value="15" >15</option>
-							<option value="16" >16</option>
-							<option value="17" >17</option>
-							<option value="18" >18</option>
-							<option value="19" >19</option>
-							<option value="20" >20</option>
-							<option value="21" >21</option>
-							<option value="22" >22</option>
-							<option value="23" >23</option>
-							<option value="24" >24</option>
-							<option value="25" >25</option>
-							<option value="26" >26</option>
-							<option value="27" >27</option>
-							<option value="28" >28</option>
-							<option value="29" >29</option>
-							<option value="30" >30</option>
-							<option value="31" >31</option>
-							</select>～
-					<select name="year">
-							<option value="2018" >2018</option>
-							<option value="2019" >2019</option>
-							<option value="2020" >2020</option>
-							<option value="2021" >2021</option>
-							<option value="2022" >2022</option>
-							<option value="2023" >2023</option>
-							</select>/
-
-					<select name="month">
-							<option value="1" >1</option>
-							<option value="2" >2</option>
-							<option value="3" >3</option>
-							<option value="4" >4</option>
-							<option value="5" >5</option>
-							<option value="6" >6</option>
-							<option value="7" >8</option>
-							<option value="8" >8</option>
-							<option value="9" >9</option>
-							<option value="10" >10</option>
-							<option value="11" >11</option>
-							<option value="12" >12</option>
-							</select>/
-					<select name="day">
-							<option value="1" >1</option>
-							<option value="2" >2</option>
-							<option value="3" >3</option>
-							<option value="4" >4</option>
-							<option value="5" >5</option>
-							<option value="6" >6</option>
-							<option value="7" >8</option>
-							<option value="8" >8</option>
-							<option value="9" >9</option>
-							<option value="10" >10</option>
-							<option value="11" >11</option>
-							<option value="12" >12</option>
-							<option value="13" >13</option>
-							<option value="14" >14</option>
-							<option value="15" >15</option>
-							<option value="16" >16</option>
-							<option value="17" >17</option>
-							<option value="18" >18</option>
-							<option value="19" >19</option>
-							<option value="20" >20</option>
-							<option value="21" >21</option>
-							<option value="22" >22</option>
-							<option value="23" >23</option>
-							<option value="24" >24</option>
-							<option value="25" >25</option>
-							<option value="26" >26</option>
-							<option value="27" >27</option>
-							<option value="28" >28</option>
-							<option value="29" >29</option>
-							<option value="30" >30</option>
-							<option value="31" >31</option>
-
-
+				<tr>
+					<th>作業者名</th>
+					<td><input type="text" name="worker1" placeholder="作業者名" size="12">
+					    <input type="text" name="worker2" value="" placeholder="作業者名" size="12">
+					    <input type="text" name="worker3" value="" placeholder="作業者名" size="12">
+					    <input type="text" name="worker4" value="" placeholder="作業者名" size="12">
+					    <input type="text" name="worker5" value="" placeholder="作業者名" size="12">
+					    <input type="text" name="worker6" value="" placeholder="作業者名" size="12">
+					    </td>
+				</tr>
+				<tr>
+					<th>期限</th>
+					<td>
+					<select name="deadLineYear">
+							<% for(int i = 2018; i <= 2050; i++){%>
+								<option value="<%= i %>" ><%= i %></option>
+							<%} %>
+						</select>/
+					<select name="deadLineMonth">
+						<% for(int i = 1; i <= 12; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>/
+					<select name="deadLineDay">
+						<% for(int i = 1; i <= 31; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>
 					</td>
 				</tr>
-					<tr>
-					<td></td>
-					<td><input type="text" value="" placeholder="工程名">
-					<select name="year">
-							<option value="2018" >2018</option>
-							<option value="2019" >2019</option>
-							<option value="2020" >2020</option>
-							<option value="2021" >2021</option>
-							<option value="2022" >2022</option>
-							<option value="2023" >2023</option>
-							</select>/
-					<select name="month">
-							<option value="1" >1</option>
-							<option value="2" >2</option>
-							<option value="3" >3</option>
-							<option value="4" >4</option>
-							<option value="5" >5</option>
-							<option value="6" >6</option>
-							<option value="7" >8</option>
-							<option value="8" >8</option>
-							<option value="9" >9</option>
-							<option value="10" >10</option>
-							<option value="11" >11</option>
-							<option value="12" >12</option>
-							</select>/
-					<select name="day">
-							<option value="1" >1</option>
-							<option value="2" >2</option>
-							<option value="3" >3</option>
-							<option value="4" >4</option>
-							<option value="5" >5</option>
-							<option value="6" >6</option>
-							<option value="7" >8</option>
-							<option value="8" >8</option>
-							<option value="9" >9</option>
-							<option value="10" >10</option>
-							<option value="11" >11</option>
-							<option value="12" >12</option>
-							<option value="13" >13</option>
-							<option value="14" >14</option>
-							<option value="15" >15</option>
-							<option value="16" >16</option>
-							<option value="17" >17</option>
-							<option value="18" >18</option>
-							<option value="19" >19</option>
-							<option value="20" >20</option>
-							<option value="21" >21</option>
-							<option value="22" >22</option>
-							<option value="23" >23</option>
-							<option value="24" >24</option>
-							<option value="25" >25</option>
-							<option value="26" >26</option>
-							<option value="27" >27</option>
-							<option value="28" >28</option>
-							<option value="29" >29</option>
-							<option value="30" >30</option>
-							<option value="31" >31</option>
-							</select>～
-					<select name="year">
-							<option value="2018" >2018</option>
-							<option value="2019" >2019</option>
-							<option value="2020" >2020</option>
-							<option value="2021" >2021</option>
-							<option value="2022" >2022</option>
-							<option value="2023" >2023</option>
-							</select>/
-
-					<select name="month">
-							<option value="1" >1</option>
-							<option value="2" >2</option>
-							<option value="3" >3</option>
-							<option value="4" >4</option>
-							<option value="5" >5</option>
-							<option value="6" >6</option>
-							<option value="7" >8</option>
-							<option value="8" >8</option>
-							<option value="9" >9</option>
-							<option value="10" >10</option>
-							<option value="11" >11</option>
-							<option value="12" >12</option>
-							</select>/
-					<select name="day">
-							<option value="1" >1</option>
-							<option value="2" >2</option>
-							<option value="3" >3</option>
-							<option value="4" >4</option>
-							<option value="5" >5</option>
-							<option value="6" >6</option>
-							<option value="7" >8</option>
-							<option value="8" >8</option>
-							<option value="9" >9</option>
-							<option value="10" >10</option>
-							<option value="11" >11</option>
-							<option value="12" >12</option>
-							<option value="13" >13</option>
-							<option value="14" >14</option>
-							<option value="15" >15</option>
-							<option value="16" >16</option>
-							<option value="17" >17</option>
-							<option value="18" >18</option>
-							<option value="19" >19</option>
-							<option value="20" >20</option>
-							<option value="21" >21</option>
-							<option value="22" >22</option>
-							<option value="23" >23</option>
-							<option value="24" >24</option>
-							<option value="25" >25</option>
-							<option value="26" >26</option>
-							<option value="27" >27</option>
-							<option value="28" >28</option>
-							<option value="29" >29</option>
-							<option value="30" >30</option>
-							<option value="31" >31</option>
-
-
+				<tr>
+					<th>作業日程</th>
+					<td><input type="text" name="processName1" placeholder="工程名">
+					<select name="startDateYear1">
+							<% for(int i = 2018; i <= 2050; i++){%>
+								<option value="<%= i %>" ><%= i %></option>
+							<%} %>
+						</select>/
+					<select name="startDateMonth1">
+						<% for(int i = 1; i <= 12; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>/
+					<select name="startDateDay1">
+						<% for(int i = 1; i <= 31; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>～
+					<select name="endDateYear1">
+							<% for(int i = 2018; i <= 2050; i++){%>
+								<option value="<%= i %>" ><%= i %></option>
+							<%} %>
+						</select>/
+					<select name="endDateMonth1">
+						<% for(int i = 1; i <= 12; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>/
+					<select name="endDateDay1">
+						<% for(int i = 1; i <= 31; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>
 					</td>
 				</tr>
-					<tr>
-					<td></td>
-					<td><input type="text" value="" placeholder="工程名">
-					<select name="year">
-							<option value="2018" >2018</option>
-							<option value="2019" >2019</option>
-							<option value="2020" >2020</option>
-							<option value="2021" >2021</option>
-							<option value="2022" >2022</option>
-							<option value="2023" >2023</option>
-							</select>/
-					<select name="month">
-							<option value="1" >1</option>
-							<option value="2" >2</option>
-							<option value="3" >3</option>
-							<option value="4" >4</option>
-							<option value="5" >5</option>
-							<option value="6" >6</option>
-							<option value="7" >8</option>
-							<option value="8" >8</option>
-							<option value="9" >9</option>
-							<option value="10" >10</option>
-							<option value="11" >11</option>
-							<option value="12" >12</option>
-							</select>/
-					<select name="day">
-							<option value="1" >1</option>
-							<option value="2" >2</option>
-							<option value="3" >3</option>
-							<option value="4" >4</option>
-							<option value="5" >5</option>
-							<option value="6" >6</option>
-							<option value="7" >8</option>
-							<option value="8" >8</option>
-							<option value="9" >9</option>
-							<option value="10" >10</option>
-							<option value="11" >11</option>
-							<option value="12" >12</option>
-							<option value="13" >13</option>
-							<option value="14" >14</option>
-							<option value="15" >15</option>
-							<option value="16" >16</option>
-							<option value="17" >17</option>
-							<option value="18" >18</option>
-							<option value="19" >19</option>
-							<option value="20" >20</option>
-							<option value="21" >21</option>
-							<option value="22" >22</option>
-							<option value="23" >23</option>
-							<option value="24" >24</option>
-							<option value="25" >25</option>
-							<option value="26" >26</option>
-							<option value="27" >27</option>
-							<option value="28" >28</option>
-							<option value="29" >29</option>
-							<option value="30" >30</option>
-							<option value="31" >31</option>
-							</select>～
-					<select name="year">
-							<option value="2018" >2018</option>
-							<option value="2019" >2019</option>
-							<option value="2020" >2020</option>
-							<option value="2021" >2021</option>
-							<option value="2022" >2022</option>
-							<option value="2023" >2023</option>
-							</select>/
-
-					<select name="month">
-							<option value="1" >1</option>
-							<option value="2" >2</option>
-							<option value="3" >3</option>
-							<option value="4" >4</option>
-							<option value="5" >5</option>
-							<option value="6" >6</option>
-							<option value="7" >8</option>
-							<option value="8" >8</option>
-							<option value="9" >9</option>
-							<option value="10" >10</option>
-							<option value="11" >11</option>
-							<option value="12" >12</option>
-							</select>/
-					<select name="day">
-							<option value="1" >1</option>
-							<option value="2" >2</option>
-							<option value="3" >3</option>
-							<option value="4" >4</option>
-							<option value="5" >5</option>
-							<option value="6" >6</option>
-							<option value="7" >8</option>
-							<option value="8" >8</option>
-							<option value="9" >9</option>
-							<option value="10" >10</option>
-							<option value="11" >11</option>
-							<option value="12" >12</option>
-							<option value="13" >13</option>
-							<option value="14" >14</option>
-							<option value="15" >15</option>
-							<option value="16" >16</option>
-							<option value="17" >17</option>
-							<option value="18" >18</option>
-							<option value="19" >19</option>
-							<option value="20" >20</option>
-							<option value="21" >21</option>
-							<option value="22" >22</option>
-							<option value="23" >23</option>
-							<option value="24" >24</option>
-							<option value="25" >25</option>
-							<option value="26" >26</option>
-							<option value="27" >27</option>
-							<option value="28" >28</option>
-							<option value="29" >29</option>
-							<option value="30" >30</option>
-							<option value="31" >31</option>
-
-
+				<tr>
+					<th>作業日程</th>
+					<td><input type="text" name="processName2" placeholder="工程名">
+					<select name="startDateYear2">
+							<% for(int i = 2018; i <= 2050; i++){%>
+								<option value="<%= i %>" ><%= i %></option>
+							<%} %>
+						</select>/
+					<select name="startDateMonth2">
+						<% for(int i = 1; i <= 12; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>/
+					<select name="startDateDay2">
+						<% for(int i = 1; i <= 31; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>～
+					<select name="endDateYear2">
+							<% for(int i = 2018; i <= 2050; i++){%>
+								<option value="<%= i %>" ><%= i %></option>
+							<%} %>
+						</select>/
+					<select name="endDateMonth2">
+						<% for(int i = 1; i <= 12; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>/
+					<select name="endDateDay2">
+						<% for(int i = 1; i <= 31; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>
+					</td>
+				</tr><tr>
+					<th>作業日程</th>
+					<td><input type="text" name="processName3" placeholder="工程名">
+					<select name="startDateYear3">
+							<% for(int i = 2018; i <= 2050; i++){%>
+								<option value="<%= i %>" ><%= i %></option>
+							<%} %>
+						</select>/
+					<select name="startDateMonth3">
+						<% for(int i = 1; i <= 12; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>/
+					<select name="startDateDay3">
+						<% for(int i = 1; i <= 31; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>～
+					<select name="endDateYear3">
+							<% for(int i = 2018; i <= 2050; i++){%>
+								<option value="<%= i %>" ><%= i %></option>
+							<%} %>
+						</select>/
+					<select name="endDateMonth3">
+						<% for(int i = 1; i <= 12; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>/
+					<select name="endDateDay3">
+						<% for(int i = 1; i <= 31; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>
+					</td>
+				</tr><tr>
+					<th>作業日程</th>
+					<td><input type="text" name="processName4" placeholder="工程名">
+					<select name="startDateYear4">
+							<% for(int i = 2018; i <= 2050; i++){%>
+								<option value="<%= i %>" ><%= i %></option>
+							<%} %>
+						</select>/
+					<select name="startDateMonth4">
+						<% for(int i = 1; i <= 12; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>/
+					<select name="startDateDay4">
+						<% for(int i = 1; i <= 31; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>～
+					<select name="endDateYear4">
+							<% for(int i = 2018; i <= 2050; i++){%>
+								<option value="<%= i %>" ><%= i %></option>
+							<%} %>
+						</select>/
+					<select name="endDateMonth4">
+						<% for(int i = 1; i <= 12; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>/
+					<select name="endDateDay4">
+						<% for(int i = 1; i <= 31; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>
+					</td>
+				</tr><tr>
+					<th>作業日程</th>
+					<td><input type="text" name="processName5" placeholder="工程名">
+					<select name="startDateYear5">
+							<% for(int i = 2018; i <= 2050; i++){%>
+								<option value="<%= i %>" ><%= i %></option>
+							<%} %>
+						</select>/
+					<select name="startDateMonth5">
+						<% for(int i = 1; i <= 12; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>/
+					<select name="startDateDay5">
+						<% for(int i = 1; i <= 31; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>～
+					<select name="endDateYear5">
+							<% for(int i = 2018; i <= 2050; i++){%>
+								<option value="<%= i %>" ><%= i %></option>
+							<%} %>
+						</select>/
+					<select name="endDateMonth5">
+						<% for(int i = 1; i <= 12; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>/
+					<select name="endDateDay5">
+						<% for(int i = 1; i <= 31; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>
+					</td>
+				</tr><tr>
+					<th>作業日程</th>
+					<td><input type="text" name="processName6" placeholder="工程名">
+					<select name="startDateYear6">
+							<% for(int i = 2018; i <= 2050; i++){%>
+								<option value="<%= i %>" ><%= i %></option>
+							<%} %>
+						</select>/
+					<select name="startDateMonth6">
+						<% for(int i = 1; i <= 12; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>/
+					<select name="startDateDay6">
+						<% for(int i = 1; i <= 31; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>～
+					<select name="endDateYear6">
+							<% for(int i = 2018; i <= 2050; i++){%>
+								<option value="<%= i %>" ><%= i %></option>
+							<%} %>
+						</select>/
+					<select name="endDateMonth6">
+						<% for(int i = 1; i <= 12; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>/
+					<select name="endDateDay6">
+						<% for(int i = 1; i <= 31; i++){ %>
+							<option value="<%= i %>" ><%= i %></option>
+						<%} %>
+					</select>
 					</td>
 				</tr>
-
 					<tr>
 						<th class="add_field">完了</th>
-						<td class="add_field"><input type="checkbox" name="finished"
-							value="true" size="8">完了した </td>
+						<td class="add_field"><input type="checkbox" name="check"
+							value="1" size="8">完了した </td>
 					</tr>
 				<td colspan="2" class="add_button">
-					<table border="0">
+					<table border="0" align="center">
 						<tr>
 							<td><input type="submit" value="更新"></td>
 							</form>

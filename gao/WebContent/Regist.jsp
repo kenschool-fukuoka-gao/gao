@@ -261,6 +261,10 @@
 					</select>
 					</td>
 				</tr>
+				<tr>
+						<th class="add_field">完了</th>
+						<td class="add_field"><input type="checkbox" name="check" value="1" size="8">完了した </td>
+					</tr>
 			</table>
 			<table border="0">
 				<tr>

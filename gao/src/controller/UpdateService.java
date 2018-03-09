@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,21 +13,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 /**
- * Servlet implementation class RegistService
+ * Servlet implementation class UpdateService
  */
-@WebServlet("/RegistService")
-public class RegistService extends HttpServlet {
+@WebServlet("/UpdateService")
+public class UpdateService extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RegistService() {
+    public UpdateService() {
         super();
         // TODO Auto-generated constructor stub
     }
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -101,10 +103,14 @@ public class RegistService extends HttpServlet {
 		String endDateDay6 = request.getParameter("endDateDay6");
 		String endDate6 = endDateYear6 + "-" + endDateMonth6 + "-" + endDateDay6;
 		String check = request.getParameter("check");
-		String finish = null;
+		String finish = "";
 
-		if(check != null){
+		if(check.equals(1)){
+			Date d = new Date();
+			SimpleDateFormat d1 = new SimpleDateFormat("yyyy-MM-dd");
+			finish = d1.format(d);
 		}
+
 		// データベースへのアクセス開始
         Connection con = null;
         Statement stmt = null;
@@ -119,7 +125,7 @@ public class RegistService extends HttpServlet {
             stmt = con.createStatement();
 	        //SQL文
 	        //メッセージ情報を挿入
-	       String sql =
+	        String sql =
 	                "INSERT INTO site (siteName, responsible, worker, deadLine, compDate)" + "VALUES ('"+siteName+"', '"+responsible+"', '"+worker+"', '"+deadLine+"', '"+finish+"')";
 	        String sql2 =
 	                "INSERT INTO process (processName, startDate, endDate)" + "VALUES ('"+processName1+"', '"+startDate1+"', '"+endDate1+"')";
@@ -156,7 +162,7 @@ public class RegistService extends HttpServlet {
             }
 
             // DBへ登録後、List.jspへ
-            RequestDispatcher rd = request.getRequestDispatcher("./List.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("./DetailList.jsp");
             rd.forward(request, response);
         }catch (Exception e) {
             e.printStackTrace();
