@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@page import="java.sql.*"%>
+<%@page import="java.util.*"%>
+<%@page import="java.text.*"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -9,9 +13,11 @@
 <link rel="STYLESHEET" href="main.css" type="text/css">
 </head>
 <body>
-<h1>現場詳細</h1>
-<hr />
-<br />
+
+	<h1>現場詳細</h1>
+	<hr />
+	<br />
+
 	<div align="center">
 		<table border="0" class="list">
 			<tr>
@@ -21,62 +27,49 @@
 				<th>完了</th>
 			</tr>
 			<tr>
-				<td>AAA.puroject</td>
-				<td>×××</td>
-				<td>YYYY/MM/DD</td>
-				<td>未 or YYYY/MM/DD</td>
-			</tr>
-			<tr>
-				<th colspan="4">メンバー</th>
-			</tr>
-			<tr>
-				<td colspan="4">○○　××.□□　△△.××　□□</td>
-			</tr>
-		<table class="chart">
-			<tr>
-				<th colspan="25"text-align="left">詳細</th></tr>
-			<tr>
-				<th>日付</th>
-					<th>3/10</th><th>3/11</th><th>3/12</th><th>3/13</th><th>3/14</th><th>3/15</th>
-			   		<th>3/16</th><th>3/17</th><th>3/18</th><th>3/19</th><th>3/20</th><th>3/21</th>
-			   		<th>3/22</th><th>3/23</th><th>3/24</th><th>3/25</th><th>3/26</th><th>3/27</th>
-			   		<th>3/28</th><th>3/29</th><th>3/30</th><th>3/31</th><th>4/01</th><th>4/02</th>
-			</tr>
-			<tr>
-				<th>見積</th>
-					<td>■</td><td>■</td><td>■</td><td></td><td></td><td></td>
-					<td></td><td></td><td></td><td></td><td></td><td></td>
-					<td></td><td></td><td></td><td></td><td></td><td></td>
-					<td></td><td></td><td></td><td></td><td></td><td></td>
-			</tr>
-			<tr>
-				<th>設計</th>
-					<td></td><td></td><td></td><td>■</td><td>■</td><td>■</td>
-					<td>■</td><td>■</td><td></td><td></td><td></td><td></td>
-					<td></td><td></td><td></td><td></td><td></td><td></td>
-					<td></td><td></td><td></td><td></td><td></td><td></td>
-			</tr>
-			<tr>
-				<th>施工</th>
-					<td></td><td></td><td></td><td></td><td></td><td></td>
-					<td></td><td></td><td>■</td><td>■</td><td>■</td><td>■</td>
-					<td>■</td><td>■</td><td>■</td><td>■</td><td>■</td><td>■</td>
-					<td>■</td><td>■</td><td>■</td><td>■</td><td>■</td><td></td>
-			</tr>
-			<tr>
-				<th>受け渡し</th>
-					<td></td><td></td><td></td><td></td><td></td><td></td>
-					<td></td><td></td><td></td><td></td><td></td><td></td>
-					<td></td><td></td><td></td><td></td><td></td><td></td>
-					<td></td><td></td><td></td><td></td><td></td><td>■</td>
+				<td><%=request.getAttribute("siteName")%></td>
+				<td><%=request.getAttribute("responsible")%></td>
+				<td><%=request.getAttribute("deadLine")%></td>
+				<td><%=request.getAttribute("compDate")%></td>
+
 			</tr>
 		</table>
-		</table>
+		//カレンダーテスト
+		<%	Calendar cal1 = Calendar.getInstance();
+			cal1.set(2017,3,9);
+			Calendar cal2 = Calendar.getInstance();
+			cal2.set(2017,3,20);
+			Calendar cal3 = Calendar.getInstance();
+			cal3.set(2017,3,9);
+			Calendar cal4 = Calendar.getInstance();
+			cal4.set(2017,3,7);
+		%>
+		<% do { %>
+		<tr><td><%=cal1.get(Calendar.MONTH)%>/<%=cal1.get(Calendar.DATE)%></td></tr>
+
+		<%
+			cal1.add(Calendar.DATE, 1);
+			} while (cal1.before(cal2));
+		%>
+		<% do {
+		if(cal1.before(cal3)){
+		%>
+		<td>■</td>
+		<%
+		}else{
+		%>
+		<td>■</td>
+		<%}
+			cal1.add(Calendar.DATE, 1);
+			} while (cal1.before(cal2));
+		%>
+
+
 		<table>
 			<tr>
 				<td>
 					<form action="Update.jsp">
-						<input type="submit" value="詳細変更">
+						<input type="submit" value="詳細更新">
 					</form>
 				</td>
 				<td>
@@ -90,7 +83,9 @@
 					</form>
 				</td>
 			</tr>
+
 		</table>
 	</div>
+
 </body>
 </html>
