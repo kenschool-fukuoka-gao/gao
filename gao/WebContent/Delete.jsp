@@ -12,37 +12,34 @@
 </head>
 <body>
 <h1>削除確認</h1>
-        <hr>
-        <div align="center">
-            <table border="0">
-                <form action="./DeleteService" method="post">
-                	<input type="hidden" name="action" value="delete" />
-
-                    <tr>
-                        <td class="add_field">
-                            削除します。<br/>
-                            よろしいですか？
-                        </td>
-	            </tr>
-                    <tr>
-                        <td class="add_button">
-                            <table border="0">
-                                <tr>
-                                    <td>
-                                        <input type="submit" value="削除" />
-                                    </td>
-                                    </form>
-                                    <form action="DetailList.jsp" method="post">
-                                    <td>
-                                        <input type="submit" value="キャンセル" />
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </form>
-            </table>
-         </div>
-
+<hr>
+	<div align="center">
+		<table border="0">
+			<form action="./DeleteService" method="post">
+				<input type="hidden" name="action" value="delete" />
+				<tr>
+					<td class="add_field">
+						削除します。<br/>よろしいですか？
+					</td>
+				</tr>
+				<tr>
+					<td class="add_button">
+						<table border="0">
+							<tr>
+								<td>
+									<input type="submit" value="削除" />
+								</td>
+			</form>
+			<form action="DetailList.jsp" method="post">
+								<td>
+									<input type="submit" value="キャンセル" />
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</form>
+		</table>
+	</div>
 </body>
 </html>

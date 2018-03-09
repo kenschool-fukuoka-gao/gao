@@ -129,30 +129,20 @@ public class UpdateService extends HttpServlet {
                 "jdbc:mysql://localhost:3306/sample", "root", "root");
             // データベース操作を行うためのStatementオブジェクトの取得
             stmt = con.createStatement();
-	        //SQL文
-	        //メッセージ情報を挿入
+	        // SQL文を挿入
             if(check == null){
-                sql =
-    	                "INSERT INTO site (siteName, responsible, worker, deadLine)" + "VALUES ('"+siteName+"', '"+responsible+"', '"+worker+"', '"+deadLine+"')";
-                }
-                else{
-                	sql =
-        	                "INSERT INTO site (siteName, responsible, worker, deadLine, compDate)" + "VALUES ('"+siteName+"', '"+responsible+"', '"+worker+"', '"+deadLine+"', '"+compDate+"')";
-                }
-            String sql2 =
-	                "INSERT INTO process (processName, startDate, endDate)" + "VALUES ('"+processName1+"', '"+startDate1+"', '"+endDate1+"')";
-	        String sql3 =
-	                "INSERT INTO process (processName, startDate, endDate)" + "VALUES ('"+processName2+"', '"+startDate2+"', '"+endDate2+"')";
-	        String sql4 =
-	                "INSERT INTO process (processName, startDate, endDate)" + "VALUES ('"+processName3+"', '"+startDate3+"', '"+endDate3+"')";
-	        String sql5 =
-	                "INSERT INTO process (processName, startDate, endDate)" + "VALUES ('"+processName4+"', '"+startDate4+"', '"+endDate4+"')";
-	        String sql6 =
-	                "INSERT INTO process (processName, startDate, endDate)" + "VALUES ('"+processName5+"', '"+startDate5+"', '"+endDate5+"')";
-	        String sql7 =
-	                "INSERT INTO process (processName, startDate, endDate)" + "VALUES ('"+processName6+"', '"+startDate6+"', '"+endDate6+"')";
+            	sql = "UPDATE site (siteName, responsible, worker, deadLine)" + "VALUES ('"+siteName+"', '"+responsible+"', '"+worker+"', '"+deadLine+"')";
+            }else{
+            	sql = "UPDATE INTO site (siteName, responsible, worker, deadLine, compDate)" + "VALUES ('"+siteName+"', '"+responsible+"', '"+worker+"', '"+deadLine+"', '"+compDate+"')";
+            }
+            String sql2 = "UPDATE INTO process (processName, startDate, endDate)" + "VALUES ('"+processName1+"', '"+startDate1+"', '"+endDate1+"')";
+	        String sql3 = "UPDATE INTO process (processName, startDate, endDate)" + "VALUES ('"+processName2+"', '"+startDate2+"', '"+endDate2+"')";
+	        String sql4 = "UPDATE INTO process (processName, startDate, endDate)" + "VALUES ('"+processName3+"', '"+startDate3+"', '"+endDate3+"')";
+	        String sql5 = "UPDATE INTO process (processName, startDate, endDate)" + "VALUES ('"+processName4+"', '"+startDate4+"', '"+endDate4+"')";
+	        String sql6 = "UPDATE INTO process (processName, startDate, endDate)" + "VALUES ('"+processName5+"', '"+startDate5+"', '"+endDate5+"')";
+	        String sql7 = "UPDATE INTO process (processName, startDate, endDate)" + "VALUES ('"+processName6+"', '"+startDate6+"', '"+endDate6+"')";
 
-	           // INSERT文を実行
+	        // INSERT文を実行
             stmt.executeUpdate(sql);
             if(processName1 != null){
             	stmt.executeUpdate(sql2);
@@ -173,12 +163,12 @@ public class UpdateService extends HttpServlet {
             	stmt.executeUpdate(sql7);
             }
 
-            // DBへ登録後、List.jspへ
+            // DBへ登録後List.jspへ
             RequestDispatcher rd = request.getRequestDispatcher("./DetailList.jsp");
             rd.forward(request, response);
         }catch (Exception e) {
             e.printStackTrace();
-        } finally {
+        }finally {
             // データベースとの接続をクローズ
             try { stmt.close(); } catch (Exception e) {}
             try { con.close(); } catch (Exception e) {}

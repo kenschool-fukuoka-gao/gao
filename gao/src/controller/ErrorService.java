@@ -28,10 +28,8 @@ public class ErrorService extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		// エンコード設定.
     	request.setCharacterEncoding( "UTF-8" );
-
     	String UserID = request.getParameter("UserID");
 
     	String forward = null;
@@ -39,24 +37,18 @@ public class ErrorService extends HttpServlet {
 			// ログイン画面の処理
 			// Login.jspへフォワードする
 			forward = "login.jsp";
-		} else {
+		}else {
 			// 不正なアクションの場合
 			forward = doError(request, response, "不正なリクエストです");
 		}
-
 		// JSPへのフォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher(forward);
 		dispatcher.forward(request, response);
-
 	}
-
 	protected String doError(HttpServletRequest request, HttpServletResponse response,
-			String message) throws ServletException, IOException {
+		String message) throws ServletException, IOException {
 		request.setAttribute("message", message);
-
 		// エラーを表示する
 		return "error.jsp";
 	}
-
-
 }

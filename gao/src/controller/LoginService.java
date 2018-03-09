@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 /**
  * Servlet implementation class loginCheck
  */
@@ -32,22 +33,18 @@ public class LoginService extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	// エンコード設定.
     	request.setCharacterEncoding( "UTF-8" );
-
     	// ID を取得.
     	String userID = request.getParameter( "UserID" );
     	if ( null == userID ) {
-    	userID = "";
+    		userID = "";
     	}
-
     	// PASSWORD を取得.
     	String userPassword = request.getParameter( "Password" );
     	if ( null == userPassword ) {
-    	userPassword = "";
+    		userPassword = "";
     	}
-
     	// セッションを取得.
     	HttpSession session = request.getSession(true);
-
     	// データベースへのアクセス開始
         Connection con = null;
         Statement stmt = null;
@@ -57,20 +54,16 @@ public class LoginService extends HttpServlet {
         	// JDBCドライバをロード
         	Class.forName("com.mysql.jdbc.Driver");
             // データベースに接続するConnectionオブジェクトの取得
-            con = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/sample",
-                "root", "root");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sample", "root", "root");
             // データベース操作を行うためのStatementオブジェクトの取得
             stmt = con.createStatement();
             // SQL()を実行して、結果を得る
-            rs = stmt.executeQuery(
-              "select * from employee");
+            rs = stmt.executeQuery( "select * from employee");
             while (rs.next()) {
             	// ログイン認証.
             	if (rs.getString("employeeId").equals(userID) && rs.getString("password").equals(userPassword)){
             		session.setAttribute("employeeName", rs.getString("employeeName"));
             		session.setAttribute("employeeId", rs.getString("employeeId"));
-
             		// リストページへ遷移(リダイレクト).
             		response.sendRedirect("./List.jsp");
             	}else{
@@ -81,9 +74,9 @@ public class LoginService extends HttpServlet {
         		// ログインフォームへ遷移(リダイレクト).
         		response.sendRedirect("./Login.jsp");
         	}
-        } catch (Exception e) {
+        }catch (Exception e) {
             e.printStackTrace();
-        } finally {
+        }finally {
             // データベースとの接続をクローズ
             try { rs.close(); } catch (Exception e) {}
             try { stmt.close(); } catch (Exception e) {}

@@ -12,13 +12,13 @@
 <form method="post" action="./LoginService" name="Login">
 	<fieldset>
 	<h1>Login</h1>
-	<form>
-		<div class="iconUser"></div>
-		<input type="text" placeholder="UserID" name="UserID" required>
-		<div class="iconPassword"></div>
-		<input type="password" placeholder="Password" name="Password" required>
-		<input type="submit" name="login" value="Enter">
+		<form>
+			<div class="iconUser"></div>
+			<input type="text" placeholder="UserID" name="UserID" required>
+			<div class="iconPassword"></div>
+			<input type="password" placeholder="Password" name="Password" required>
+			<input type="submit" name="login" value="Enter">
     </fieldset>
-	</form>
+		</form>
 </body>
 </html>

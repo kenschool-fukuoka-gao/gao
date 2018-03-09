@@ -31,10 +31,8 @@ public class DeleteService extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		// エンコード設定.
     	request.setCharacterEncoding( "UTF-8" );
-
     	//画面から現場IDを取得する
     	int num = 0;
     	/*
@@ -42,7 +40,6 @@ public class DeleteService extends HttpServlet {
 			num = Integer.parseInt(request.getParameter("siteId"));
 		}
 		*/
-
 		//テスト
 		num = 5;
 		// エンコード設定.
@@ -50,7 +47,6 @@ public class DeleteService extends HttpServlet {
 		//データベースへのアクセス開始
 		Connection con = null;
 		PreparedStatement pst = null;
-
 		try{
 	 		// JDBCドライバをロード
 	 		Class.forName("com.mysql.jdbc.Driver");
@@ -62,22 +58,17 @@ public class DeleteService extends HttpServlet {
 	 		pst = con.prepareStatement(sql);
 	 		pst.setInt(1,num);
 	 		pst.executeUpdate();
-
 	 		//画面遷移
 	 		RequestDispatcher rd = request.getRequestDispatcher("List.jsp");
 			rd.forward(request, response);
-
-			}catch(Exception e){
-				e.printStackTrace();
-			}finally{
-				// データベースとの接続をクローズ
-				try{
-					pst.close();
-			 		con.close();
-				}catch(Exception e){
-				}
-			}
-
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			// データベースとの接続をクローズ
+			try{
+				pst.close();
+			 	con.close();
+			}catch(Exception e){ }
+		}
 	}
-
 }
