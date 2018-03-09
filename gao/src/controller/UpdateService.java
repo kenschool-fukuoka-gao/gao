@@ -133,14 +133,14 @@ public class UpdateService extends HttpServlet {
             if(check == null){
             	sql = "UPDATE site (siteName, responsible, worker, deadLine)" + "VALUES ('"+siteName+"', '"+responsible+"', '"+worker+"', '"+deadLine+"')";
             }else{
-            	sql = "UPDATE INTO site (siteName, responsible, worker, deadLine, compDate)" + "VALUES ('"+siteName+"', '"+responsible+"', '"+worker+"', '"+deadLine+"', '"+compDate+"')";
+            	sql = "UPDATE site (siteName, responsible, worker, deadLine, compDate)" + "VALUES ('"+siteName+"', '"+responsible+"', '"+worker+"', '"+deadLine+"', '"+compDate+"')";
             }
-            String sql2 = "UPDATE INTO process (processName, startDate, endDate)" + "VALUES ('"+processName1+"', '"+startDate1+"', '"+endDate1+"')";
-	        String sql3 = "UPDATE INTO process (processName, startDate, endDate)" + "VALUES ('"+processName2+"', '"+startDate2+"', '"+endDate2+"')";
-	        String sql4 = "UPDATE INTO process (processName, startDate, endDate)" + "VALUES ('"+processName3+"', '"+startDate3+"', '"+endDate3+"')";
-	        String sql5 = "UPDATE INTO process (processName, startDate, endDate)" + "VALUES ('"+processName4+"', '"+startDate4+"', '"+endDate4+"')";
-	        String sql6 = "UPDATE INTO process (processName, startDate, endDate)" + "VALUES ('"+processName5+"', '"+startDate5+"', '"+endDate5+"')";
-	        String sql7 = "UPDATE INTO process (processName, startDate, endDate)" + "VALUES ('"+processName6+"', '"+startDate6+"', '"+endDate6+"')";
+            String sql2 = "UPDATE process (processName, startDate, endDate)" + "VALUES ('"+processName1+"', '"+startDate1+"', '"+endDate1+"')";
+	        String sql3 = "UPDATE process (processName, startDate, endDate)" + "VALUES ('"+processName2+"', '"+startDate2+"', '"+endDate2+"')";
+	        String sql4 = "UPDATE process (processName, startDate, endDate)" + "VALUES ('"+processName3+"', '"+startDate3+"', '"+endDate3+"')";
+	        String sql5 = "UPDATE process (processName, startDate, endDate)" + "VALUES ('"+processName4+"', '"+startDate4+"', '"+endDate4+"')";
+	        String sql6 = "UPDATE process (processName, startDate, endDate)" + "VALUES ('"+processName5+"', '"+startDate5+"', '"+endDate5+"')";
+	        String sql7 = "UPDATE process (processName, startDate, endDate)" + "VALUES ('"+processName6+"', '"+startDate6+"', '"+endDate6+"')";
 
 	        // INSERT文を実行
             stmt.executeUpdate(sql);
