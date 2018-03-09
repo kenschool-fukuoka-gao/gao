@@ -91,7 +91,7 @@
 <%
 		}
 	}catch (Exception e) {
-		e.printStackTrace();
+		response.sendRedirect("./Error.jsp");
 	}finally {
 		// データベースとの接続をクローズ
 		try { rs.close(); } catch (Exception e) {}
