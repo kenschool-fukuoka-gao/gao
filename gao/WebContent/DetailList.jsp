@@ -33,37 +33,53 @@
 				<td><%=request.getAttribute("compDate")%></td>
 
 			</tr>
-		</table>
+		</table >
 		//カレンダーテスト
-		<%	Calendar cal1 = Calendar.getInstance();
-			cal1.set(2017,3,9);
+		<%
+			Calendar cal1 = Calendar.getInstance();
+			cal1.set(2017, 3, 9);
 			Calendar cal2 = Calendar.getInstance();
-			cal2.set(2017,3,20);
+			cal2.set(2017, 3, 20);
 			Calendar cal3 = Calendar.getInstance();
-			cal3.set(2017,3,9);
+			cal3.set(2017, 3, 10);
 			Calendar cal4 = Calendar.getInstance();
-			cal4.set(2017,3,7);
+			cal4.set(2017, 3, 15);
 		%>
-		<% do { %>
-		<tr><td><%=cal1.get(Calendar.MONTH)%>/<%=cal1.get(Calendar.DATE)%></td></tr>
-
-		<%
-			cal1.add(Calendar.DATE, 1);
-			} while (cal1.before(cal2));
-		%>
-		<% do {
-		if(cal1.before(cal3)){
-		%>
-		<td>■</td>
-		<%
-		}else{
-		%>
-		<td>■</td>
-		<%}
-			cal1.add(Calendar.DATE, 1);
-			} while (cal1.before(cal2));
-		%>
-
+		<table border="0" class="list">
+		<tr>
+			<%
+				do {
+			%>
+				<td><%=cal1.get(Calendar.MONTH)%>/<%=cal1.get(Calendar.DATE)%></td>
+			<%
+				cal1.add(Calendar.DATE, 1);
+				} while (cal1.before(cal2));
+			%>
+			</tr>
+			<tr>
+				<%
+					cal1.set(2017, 3, 9);
+					do {
+						if (cal1.before(cal3)) {
+				%>
+				<td></td>
+				<%
+					} else {
+							if (cal1.before(cal4)) {
+				%>
+				<td>■</td>
+				<%
+					} else {
+				%>
+				<td></td>
+				<%
+					}
+						}
+						cal1.add(Calendar.DATE, 1);
+					} while (cal1.before(cal2));
+				%>
+			</tr>
+		</table>
 		<table>
 			<tr>
 				<td>
