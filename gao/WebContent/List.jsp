@@ -99,6 +99,8 @@
             try { con.close(); } catch (Exception e) {}
         }
 %>
+			<form action="./DetailListService" name="DetailListService">
+			</form>
 		</table>
 	</div>
 </body>
