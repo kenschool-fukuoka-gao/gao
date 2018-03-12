@@ -78,13 +78,14 @@
 					</form>
 				</td>
 				<td>
-					<form action="Delete.jsp">
-						<input type="submit" value="削除">
+					<form action="Delete.jsp?siteId=<%= siteId %>" method="post">
+
+						<input type="submit" value="削除" />
 					</form>
 				</td>
 				<td>
 					<form action="List.jsp">
-						<input type="submit" value="戻る">
+						<input type="submit" value="戻る" />
 					</form>
 				</td>
 			</tr>
@@ -139,7 +140,7 @@
 <%
 		}catch (Exception e) {
 			e.printStackTrace();
-			response.sendRedirect("./Error.jsp");
+			//response.sendRedirect("./Error.jsp");
 	}finally {
 		// データベースとの接続をクローズ
 		try { rs.close(); } catch (Exception e) {}

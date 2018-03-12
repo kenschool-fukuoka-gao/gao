@@ -61,7 +61,7 @@ public class DetailListService extends HttpServlet {
 		//テスト
 		id = 1;
 		// エンコード設定.
-    	request.setCharacterEncoding( "UTF-8" );
+
     	//	テスト表示用
     	response.setContentType("text/html:charset = utf-8");
     	PrintWriter out =response.getWriter();
@@ -77,7 +77,7 @@ public class DetailListService extends HttpServlet {
 	 		// データベースに接続するConnectionオブジェクトの取得
 	 		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sample","root","root");
 			//SQLの作成
-	 		sql = "SELECT * FROM site WHERE siteid =?";
+	 		sql = "SELECT * FROM site WHERE siteid = ?";
 	 		// データベース操作を行うためのStatementオブジェクトの取得
 	 		pst = con.prepareStatement(sql);
 	 		pst.setInt(1,id);

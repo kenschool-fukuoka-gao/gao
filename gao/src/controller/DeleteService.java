@@ -34,6 +34,7 @@ public class DeleteService extends HttpServlet {
 		// エンコード設定.
     	request.setCharacterEncoding( "UTF-8" );
     	//画面から現場IDを取得する
+    	String siteId = request.getParameter("siteId");
     	int num = 0;
     	/*
 		if(request.getParameter("siteId") != null){
@@ -53,17 +54,17 @@ public class DeleteService extends HttpServlet {
 	 		// データベースに接続するConnectionオブジェクトの取得
 	 		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sample","root","root");
 			//SQLの作成
-	 		String sql = "DELETE FROM site WHERE siteId = ?";
+	 		String sql = "DELETE FROM site WHERE siteId = " + siteId;
 	 		// データベース操作を行うためのStatementオブジェクトの取得
 	 		pst = con.prepareStatement(sql);
-	 		pst.setInt(1,num);
+	 		//pst.setInt(1,num);
 	 		pst.executeUpdate();
 	 		//画面遷移
 	 		RequestDispatcher rd = request.getRequestDispatcher("List.jsp");
 			rd.forward(request, response);
 		}catch(Exception e){
 			e.printStackTrace();
-			response.sendRedirect("./Error.jsp");
+			//response.sendRedirect("./Error.jsp");
 		}finally{
 			// データベースとの接続をクローズ
 			try{

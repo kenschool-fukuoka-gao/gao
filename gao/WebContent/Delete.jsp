@@ -11,11 +11,12 @@
 <link rel="STYLESHEET" href="main.css" type="text/css">
 </head>
 <body>
+<% String siteId = request.getParameter("siteId"); %>
 <h1>削除確認</h1>
 <hr>
 	<div align="center">
 		<table border="0">
-			<form action="./DeleteService" method="post">
+			<form action="./DeleteService?siteId=<%= siteId %>" method="post">
 				<input type="hidden" name="action" value="delete" />
 				<tr>
 					<td class="add_field">
