@@ -17,9 +17,6 @@
 	Connection con = null;
 	Statement stmt = null;
 	ResultSet rs = null;
-	//GregorianCalendar cal = new GregorianCalendar();
-	//SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-	//String datestr = format.format(cal.getTime());
 	try {
 		// JDBCドライバをロード
 		Class.forName("com.mysql.jdbc.Driver");

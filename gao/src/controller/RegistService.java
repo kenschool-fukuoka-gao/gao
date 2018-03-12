@@ -125,22 +125,22 @@ public class RegistService extends HttpServlet {
 
 	        // INSERT文を実行
             stmt.executeUpdate(sql);
-            if(processName1 != null){
+            if(processName1 != ""){
             	stmt.executeUpdate(sql2);
             }
-            if(processName2 != null){
+            if(processName2 != ""){
             	stmt.executeUpdate(sql3);
             }
-            if(processName3 != null){
+            if(processName3 != ""){
             	stmt.executeUpdate(sql4);
             }
-            if(processName4 != null){
+            if(processName4 != ""){
             	stmt.executeUpdate(sql5);
             }
-            if(processName5 != null){
+            if(processName5 != ""){
             	stmt.executeUpdate(sql6);
             }
-            if(processName6 != null){
+            if(processName6 != ""){
             	stmt.executeUpdate(sql7);
             }
 

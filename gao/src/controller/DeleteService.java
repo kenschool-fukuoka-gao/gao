@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -35,29 +37,35 @@ public class DeleteService extends HttpServlet {
     	request.setCharacterEncoding( "UTF-8" );
     	//画面から現場IDを取得する
     	String siteId = request.getParameter("siteId");
-    	int num = 0;
-    	/*
-		if(request.getParameter("siteId") != null){
-			num = Integer.parseInt(request.getParameter("siteId"));
-		}
-		*/
-		//テスト
-		num = 5;
 		// エンコード設定.
     	request.setCharacterEncoding( "UTF-8" );
 		//データベースへのアクセス開始
 		Connection con = null;
 		PreparedStatement pst = null;
+		PreparedStatement pst2 = null;
+		Statement stmt = null;
+		ResultSet rs = null;
 		try{
 	 		// JDBCドライバをロード
 	 		Class.forName("com.mysql.jdbc.Driver");
 	 		// データベースに接続するConnectionオブジェクトの取得
 	 		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sample","root","root");
+	 		// データベース操作を行うためのStatementオブジェクトの取得
+			stmt = con.createStatement();
+			// SQL()を実行して、結果を得る
+			rs = stmt.executeQuery("select siteId, processId from site CROSS JOIN process");
+			// 得られた結果をレコードごとに表示
+			while (rs.next()) {
+				if(siteId.equals(rs.getString("siteId"))){
+				String sql2 = "DELETE FROM process WHERE processId = " + rs.getString("processId");
+				pst2 = con.prepareStatement(sql2);
+		 		pst2.executeUpdate();
+				}
+			}
 			//SQLの作成
 	 		String sql = "DELETE FROM site WHERE siteId = " + siteId;
 	 		// データベース操作を行うためのStatementオブジェクトの取得
 	 		pst = con.prepareStatement(sql);
-	 		//pst.setInt(1,num);
 	 		pst.executeUpdate();
 	 		//画面遷移
 	 		RequestDispatcher rd = request.getRequestDispatcher("List.jsp");
