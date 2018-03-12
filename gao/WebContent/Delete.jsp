@@ -30,7 +30,7 @@
 									<input type="submit" value="削除" />
 								</td>
 			</form>
-			<form action="DetailList.jsp" method="post">
+			<form action="List.jsp" method="post">
 								<td>
 									<input type="submit" value="キャンセル" />
 								</td>

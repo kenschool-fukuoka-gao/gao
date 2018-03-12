@@ -148,6 +148,7 @@ public class RegistService extends HttpServlet {
             RequestDispatcher rd = request.getRequestDispatcher("./List.jsp");
             rd.forward(request, response);
         }catch (Exception e) {
+        	e.printStackTrace();
         	response.sendRedirect("./Error.jsp");
         } finally {
             // データベースとの接続をクローズ

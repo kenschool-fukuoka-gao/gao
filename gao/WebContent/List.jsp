@@ -86,11 +86,12 @@
 <%
 			}
 %>
-				<td><a href="./DetailListService?siteId=<%= rs.getString("siteId")%>" method="post"><input type="submit" value="詳細" name="change"></a></td>
+				<td><a href="./DetailList.jsp?siteId=<%= rs.getString("siteId")%>"><input type="submit" value="詳細" name="change"></a></td>
 			</tr>
 <%
 		}
 	}catch (Exception e) {
+		e.printStackTrace();
 		response.sendRedirect("/Error.jsp");
 	}finally {
 		// データベースとの接続をクローズ
@@ -99,8 +100,6 @@
             try { con.close(); } catch (Exception e) {}
         }
 %>
-			<form action="./DetailListService" name="DetailListService">
-			</form>
 		</table>
 	</div>
 </body>

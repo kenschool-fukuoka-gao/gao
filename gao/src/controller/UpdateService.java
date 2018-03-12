@@ -163,10 +163,11 @@ public class UpdateService extends HttpServlet {
             	stmt.executeUpdate(sql7);
             }
 
-            // DBへ登録後List.jspへ
+            // DBへ更新後DetailList.jspへ
             RequestDispatcher rd = request.getRequestDispatcher("./DetailList.jsp");
             rd.forward(request, response);
         }catch (Exception e) {
+        	e.printStackTrace();
         	response.sendRedirect("./Error.jsp");
         }finally {
             // データベースとの接続をクローズ

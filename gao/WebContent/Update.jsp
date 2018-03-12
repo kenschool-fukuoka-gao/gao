@@ -271,7 +271,7 @@
 							<tr>
 								<td><input type="submit" value="更新"></td>
 			</form>
-			<form action="DetailList.jsp">
+			<form action="List.jsp">
 								<td><input type="submit" value="キャンセル"></td>
 							</tr>
 						</table>

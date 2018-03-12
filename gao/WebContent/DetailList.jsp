@@ -13,33 +13,89 @@
 <link rel="STYLESHEET" href="main.css" type="text/css">
 </head>
 <body>
-
-	<h1>現場詳細</h1>
-	<hr />
-	<br />
-
+<%
+	// siteId取得
+	String siteId = request.getParameter("siteId");
+	// データベースへのアクセス開始
+	Connection con = null;
+	Statement stmt = null;
+	ResultSet rs = null;
+	//GregorianCalendar cal = new GregorianCalendar();
+	//SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+	//String datestr = format.format(cal.getTime());
+	try {
+		// JDBCドライバをロード
+		Class.forName("com.mysql.jdbc.Driver");
+		// データベースに接続するConnectionオブジェクトの取得
+		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sample", "root", "root");
+		// データベース操作を行うためのStatementオブジェクトの取得
+		stmt = con.createStatement();
+		// SQL()を実行して、結果を得る
+		rs = stmt.executeQuery("select siteId, siteName, responsible, deadLine, compDate from site");
+%>
+<h1>現場詳細</h1>
+<hr>
+<br />
 	<div align="center">
 		<table border="0" class="list">
 			<tr>
-				<th>お客様名</th>
+				<th>現場名</th>
 				<th>担当者</th>
 				<th>期限</th>
 				<th>完了</th>
 			</tr>
+<%
+		// 得られた結果をレコードごとに表示
+		while (rs.next()) {
+			if(siteId.equals(rs.getString("siteId"))){
+%>
 			<tr>
-				<td><%=request.getAttribute("siteName")%></td>
-				<td><%=request.getAttribute("responsible")%></td>
-				<td><%=request.getAttribute("deadLine")%></td>
-				<td><%=request.getAttribute("compDate")%></td>
+				<%-- indexpsの現場名を表示 --%>
+				<td><%= rs.getString("siteName")%></td>
+				<%-- indexpsの担当者を表示 --%>
+				<td><%= rs.getString("responsible")%></td>
+				<%-- indexpsの期限を表示 --%>
+				<td><%= rs.getString("deadLine")%></td>
+				<%-- 完了日を表示 --%>
+<%
+			if(rs.getString("compDate") != null){
+%>
+				<td><%= rs.getString("compDate") %></td>
+<%
+			}else{
+%>
+				<td><%= "未完了" %></td>
+<%
+			}}}
 
+%>
 			</tr>
-		</table >
-		//カレンダーテスト
+			<table>
+			<tr>
+				<td>
+					<form action="Update.jsp">
+						<input type="submit" value="詳細更新">
+					</form>
+				</td>
+				<td>
+					<form action="Delete.jsp">
+						<input type="submit" value="削除">
+					</form>
+				</td>
+				<td>
+					<form action="List.jsp">
+						<input type="submit" value="戻る">
+					</form>
+				</td>
+			</tr>
+
+		</table>
+				//カレンダーテスト
 		<%
 			Calendar cal1 = Calendar.getInstance();
 			cal1.set(2017, 3, 9);
 			Calendar cal2 = Calendar.getInstance();
-			cal2.set(2017, 5, 20);
+			cal2.set(2017, 4, 20);
 			Calendar cal3 = Calendar.getInstance();
 			cal3.set(2017, 3, 10);
 			Calendar cal4 = Calendar.getInstance();
@@ -80,27 +136,18 @@
 				%>
 			</tr>
 		</table>
-		<table>
-			<tr>
-				<td>
-					<form action="Update.jsp">
-						<input type="submit" value="詳細更新">
-					</form>
-				</td>
-				<td>
-					<form action="Delete.jsp">
-						<input type="submit" value="削除">
-					</form>
-				</td>
-				<td>
-					<form action="List.jsp">
-						<input type="submit" value="戻る">
-					</form>
-				</td>
-			</tr>
-
+<%
+		}catch (Exception e) {
+			e.printStackTrace();
+			response.sendRedirect("./Error.jsp");
+	}finally {
+		// データベースとの接続をクローズ
+		try { rs.close(); } catch (Exception e) {}
+            try { stmt.close(); } catch (Exception e) {}
+            try { con.close(); } catch (Exception e) {}
+	}
+%>
 		</table>
 	</div>
-
 </body>
 </html>

@@ -36,6 +36,7 @@ public class LogoutService extends HttpServlet {
 			// ログインフォームへ遷移(リダイレクト).
 			response.sendRedirect("./Login.jsp");
 		}catch(Exception e){
+			e.printStackTrace();
 			response.sendRedirect("./Error.jsp");
 		}
 	}
