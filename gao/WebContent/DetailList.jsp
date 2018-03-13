@@ -4,6 +4,7 @@
 <%@page import="java.sql.*"%>
 <%@page import="java.util.*"%>
 <%@page import="java.text.*"%>
+<%@page import="model.ProcessBean"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -13,141 +14,136 @@
 <link rel="STYLESHEET" href="main.css" type="text/css">
 </head>
 <body>
-<%
-	// siteId取得
-	String siteId = request.getParameter("siteId");
-	// データベースへのアクセス開始
-	Connection con = null;
-	Statement stmt = null;
-	ResultSet rs = null;
-	//GregorianCalendar cal = new GregorianCalendar();
-	//SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-	//String datestr = format.format(cal.getTime());
-	try {
-		// JDBCドライバをロード
-		Class.forName("com.mysql.jdbc.Driver");
-		// データベースに接続するConnectionオブジェクトの取得
-		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sample", "root", "root");
-		// データベース操作を行うためのStatementオブジェクトの取得
-		stmt = con.createStatement();
-		// SQL()を実行して、結果を得る
-		rs = stmt.executeQuery("select siteId, siteName, responsible, deadLine, compDate from site");
-%>
 <h1>現場詳細</h1>
-<hr>
-<br />
+	<hr />
+	<br />
+
 	<div align="center">
 		<table border="0" class="list">
 			<tr>
-				<th>現場名</th>
+				<th>お客様名</th>
 				<th>担当者</th>
 				<th>期限</th>
 				<th>完了</th>
 			</tr>
-<%
-		// 得られた結果をレコードごとに表示
-		while (rs.next()) {
-			if(siteId.equals(rs.getString("siteId"))){
-%>
 			<tr>
-				<%-- indexpsの現場名を表示 --%>
-				<td><%= rs.getString("siteName")%></td>
-				<%-- indexpsの担当者を表示 --%>
-				<td><%= rs.getString("responsible")%></td>
-				<%-- indexpsの期限を表示 --%>
-				<td><%= rs.getString("deadLine")%></td>
-				<%-- 完了日を表示 --%>
-<%
-			if(rs.getString("compDate") != null){
-%>
-				<td><%= rs.getString("compDate") %></td>
-<%
-			}else{
-%>
-				<td><%= "未完了" %></td>
-<%
-			}}}
+				<td><%=request.getAttribute("siteName")%></td>
+				<td><%=request.getAttribute("responsible")%></td>
+				<td><%=request.getAttribute("deadLine")%></td>
+				<td><%=request.getAttribute("compDate")%></td>
 
-%>
 			</tr>
-			<table>
-			<tr>
-				<td>
-					<form action="Update.jsp">
-						<input type="submit" value="詳細更新">
-					</form>
-				</td>
-				<td>
-					<form action="Delete.jsp?siteId=<%= siteId %>" method="post">
-
-						<input type="submit" value="削除" />
-					</form>
-				</td>
-				<td>
-					<form action="List.jsp">
-						<input type="submit" value="戻る" />
-					</form>
-				</td>
-			</tr>
-
 		</table>
-				//カレンダーテスト
 		<%
-			Calendar cal1 = Calendar.getInstance();
-			cal1.set(2017, 3, 9);
-			Calendar cal2 = Calendar.getInstance();
-			cal2.set(2017, 4, 20);
-			Calendar cal3 = Calendar.getInstance();
-			cal3.set(2017, 3, 10);
-			Calendar cal4 = Calendar.getInstance();
-			cal4.set(2017, 3, 15);
-		%>
+			ArrayList<ProcessBean> list = (ArrayList<ProcessBean>) request.getAttribute("List");
+			ArrayList<Calendar> cal_startDay = new ArrayList<Calendar>();
+			ArrayList<Calendar> cal_endDay = new ArrayList<Calendar>();
+			ArrayList<String> processNameLlist = new ArrayList<String>();
+			Calendar cal_start_top = Calendar.getInstance();
+			Calendar cal_end_top = Calendar.getInstance();
+			for (int i = 0; i < list.size(); i++) {
+				ProcessBean processBean = list.get(i);
+				String name = processBean.getProcessName();
+				processNameLlist.add(name);
+				String[] startDay = (processBean.getStartDate()).split("-", 0);
+				String[] endDay = (processBean.getEndDate()).split("-", 0);
+				Calendar cal_start = Calendar.getInstance();
+				cal_start.set(Integer.parseInt(startDay[0]), Integer.parseInt(startDay[1]),Integer.parseInt(startDay[2]));
+				cal_startDay.add(cal_start);
+				%>
+				<p><%=name %></p>
+				<p><%=cal_start.get(Calendar.YEAR) %>/<%=cal_start.get(Calendar.MONTH) %>/<%=cal_start.get(Calendar.DATE) %></p>
+				<%
+				Calendar cal_end = Calendar.getInstance();
+				cal_end.set(Integer.parseInt(endDay[0]), Integer.parseInt(endDay[1]), Integer.parseInt(endDay[2]));
+				cal_endDay.add(cal_end);
+				%>
+				<p><%=name %></p>
+				<p><%=cal_end.get(Calendar.YEAR) %>/<%=cal_end.get(Calendar.MONTH) %>/<%=cal_end.get(Calendar.DATE) %></p>
+				<%
+			}
+			int ys = cal_startDay.get(0).get(Calendar.YEAR);
+			int ms = cal_startDay.get(0).get(Calendar.MONTH);
+			int ds = cal_startDay.get(0).get(Calendar.DATE);
+			cal_start_top.set(ys, ms, ds);
+			for (int i = 0; i < cal_startDay.size(); i++) {
+				if (cal_startDay.get(i).before(cal_start_top)) {
+					cal_start_top.clear();
+					int y = cal_startDay.get(i).get(Calendar.YEAR);
+					int m = cal_startDay.get(i).get(Calendar.MONTH);
+					int d = cal_startDay.get(i).get(Calendar.DATE);
+					cal_start_top.set(y, m, d);
+				}
+			}
+			%>
+			<p><%=cal_start_top.get(Calendar.YEAR) %>/<%=cal_start_top.get(Calendar.MONTH) %>/<%=cal_start_top.get(Calendar.DATE) %></p>
+			<%
+			int ye = cal_endDay.get(0).get(Calendar.YEAR);
+			int me = cal_endDay.get(0).get(Calendar.MONTH);
+			int de = cal_endDay.get(0).get(Calendar.DATE);
+			cal_end_top.set(ye, me, de);
+			for (int i = 0; i < cal_endDay.size(); i++) {
+				if (cal_endDay.get(i).after(cal_end_top)) {
+					cal_end_top.clear();
+					int y = cal_endDay.get(i).get(Calendar.YEAR);
+					int m = cal_endDay.get(i).get(Calendar.MONTH);
+					int d = cal_endDay.get(i).get(Calendar.DATE);
+					cal_end_top.set(y, m, d);
+				}
+			}
+			cal_end_top.add(Calendar.DATE, 1);
+			int y = cal_start_top.get(Calendar.YEAR);
+			int m = cal_start_top.get(Calendar.MONTH);
+			int d = cal_start_top.get(Calendar.DATE);
+			%>
+			<p><%=cal_end_top.get(Calendar.YEAR) %>/<%=cal_end_top.get(Calendar.MONTH) %>/<%=cal_end_top.get(Calendar.DATE) %></p>
 		<table border="0" class="list">
-		<tr>
-			<%
-				do {
-			%>
-				<td><%=cal1.get(Calendar.MONTH)%>/<%=cal1.get(Calendar.DATE)%></td>
-			<%
-				cal1.add(Calendar.DATE, 1);
-				} while (cal1.before(cal2));
-			%>
-			</tr>
 			<tr>
+				<td>日程</td>
 				<%
-					cal1.set(2017, 3, 9);
+
 					do {
-						if (cal1.before(cal3)) {
 				%>
-				<td></td>
+				<td><%=cal_start_top.get(Calendar.MONTH)%>/<%=cal_start_top.get(Calendar.DATE)%></td>
 				<%
+					cal_start_top.add(Calendar.DATE, 1);
+					} while (cal_start_top.before(cal_end_top));
+				%>
+			</tr>
+				<%
+
+				for (int i = 0; i < cal_startDay.size(); i++) {
+					cal_endDay.get(i).add(Calendar.DATE, 1);
+
+					%>
+					<tr>
+					<td><%=processNameLlist.get(i)%></td>
+					<%
+					cal_start_top.set(y, m, d);
+				do{
+					if(cal_start_top.before(cal_startDay.get(i))){
+						%>
+						<td></td>
+						<%
 					} else {
-							if (cal1.before(cal4)) {
-				%>
-				<td>■</td>
-				<%
-					} else {
-				%>
-				<td></td>
-				<%
+					if(cal_start_top.before(cal_endDay.get(i))){
+						%>
+						<td>■</td>
+						<%
+					}else{
+						%>
+						<td></td>
+						<%
 					}
-						}
-						cal1.add(Calendar.DATE, 1);
-					} while (cal1.before(cal2));
+					}
+				cal_start_top.add(Calendar.DATE, 1);
+				} while (cal_start_top.before(cal_end_top));
+				}
 				%>
+				</tr>
 			</tr>
 		</table>
-<%
-		}catch (Exception e) {
-			e.printStackTrace();
-			//response.sendRedirect("./Error.jsp");
-	}finally {
-		// データベースとの接続をクローズ
-		try { rs.close(); } catch (Exception e) {}
-            try { stmt.close(); } catch (Exception e) {}
-            try { con.close(); } catch (Exception e) {}
-	}
-%>
+
 		</table>
 	</div>
 </body>

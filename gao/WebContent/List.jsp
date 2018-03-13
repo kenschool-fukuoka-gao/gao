@@ -83,7 +83,7 @@
 <%
 			}
 %>
-				<td><a href="./DetailList.jsp?siteId=<%= rs.getString("siteId")%>"><input type="submit" value="詳細" name="change"></a></td>
+				<td><a href="./DetailListService?siteId=<%= rs.getString("siteId")%>"><input type="submit" value="詳細" name="change"></a></td>
 			</tr>
 <%
 		}
