@@ -141,8 +141,25 @@
 				}
 				%>
 				</tr>
-			</tr>
 		</table>
+		<table>
+			<tr>
+				<td>
+					<form action="Update.jsp">
+						<input type="submit" value="詳細更新">
+					</form>
+				</td>
+				<td>
+					<form action="Delete.jsp">
+						<input type="submit" value="削除">
+					</form>
+				</td>
+				<td>
+					<form action="List.jsp">
+						<input type="submit" value="戻る">
+					</form>
+				</td>
+			</tr>
 
 		</table>
 	</div>
