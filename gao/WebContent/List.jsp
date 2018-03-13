@@ -25,7 +25,7 @@
 		// データベース操作を行うためのStatementオブジェクトの取得
 		stmt = con.createStatement();
 		// SQL()を実行して、結果を得る
-		rs = stmt.executeQuery("select siteId, siteName, responsible, deadLine, compDate from site");
+		rs = stmt.executeQuery("select siteId, siteName, responsible, worker, deadLine, compDate from site");
 		String employeeName = (String) session.getAttribute("employeeName");
 %>
 <h1>現場一覧</h1>
@@ -63,6 +63,7 @@
 <%
 		// 得られた結果をレコードごとに表示
 		while (rs.next()) {
+			String hoge = rs.getString("worker");
 %>
 			<tr>
 				<%-- indexpsの現場名を表示 --%>

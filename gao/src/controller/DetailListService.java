@@ -75,6 +75,7 @@ public class DetailListService extends HttpServlet {
 				request.setAttribute("responsible", rs.getString("responsible"));
 				request.setAttribute("deadLine", rs.getString("deadLine"));
 				request.setAttribute("compDate", rs.getString("compDate"));
+				request.setAttribute("worker", rs.getString("worker"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
