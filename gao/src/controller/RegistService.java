@@ -104,6 +104,8 @@ public class RegistService extends HttpServlet {
 		String endDate6 = endDateYear6 + "-" + endDateMonth6 + "-" + endDateDay6;
 		int siteId = 1;
    		int processId = 1;
+   		int siteMax = 1;
+   		int proMax = 1;
 
 
 		// データベースへのアクセス開始
@@ -129,9 +131,19 @@ public class RegistService extends HttpServlet {
         		processId = rs.getInt("count(*)");
         	}
         	rs.close();
+        	rs = stmt.executeQuery("select max(siteId) from site");
+        	while (rs.next()) {
+        		siteMax = rs.getInt("max(siteId)");
+        	}
+        	rs.close();
+        	rs = stmt.executeQuery("select max(processId) from process");
+        	while (rs.next()) {
+        		proMax = rs.getInt("max(processId)");
+        	}
+        	rs.close();
+
         }catch (Exception e) {
         	e.printStackTrace();
-        	response.sendRedirect("./Error.jsp");
         }finally {
         	// データベースとの接続をクローズ
         	try { rs.close(); } catch (Exception e) {}
@@ -151,8 +163,10 @@ public class RegistService extends HttpServlet {
             // データベース操作を行うためのStatementオブジェクトの取得
             stmt = con.createStatement();
 	        //SQL文を挿入
+            siteId = siteId + (siteMax - siteId);
             siteId+=1;
 	        String sql = "INSERT INTO site (siteId, siteName, responsible, worker, deadLine)" + "VALUES ('"+siteId+"', '"+siteName+"', '"+responsible+"', '"+worker+"', '"+deadLine+"')";
+	        processId = processId + (proMax - processId);
 	        processId+=1;
 	        String sql2 = "INSERT INTO process (processId, processName, startDate, endDate)" + "VALUES ('"+processId+"', '"+processName1+"', '"+startDate1+"', '"+endDate1+"')";
 	        String sql22 = "INSERT INTO site_pro (siteId, processId)" + "VALUES ('"+siteId+"', '"+processId+"')";
