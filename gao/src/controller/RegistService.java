@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
 
 import javax.servlet.RequestDispatcher;
@@ -101,11 +102,46 @@ public class RegistService extends HttpServlet {
 		String endDateMonth6 = request.getParameter("endDateMonth6");
 		String endDateDay6 = request.getParameter("endDateDay6");
 		String endDate6 = endDateYear6 + "-" + endDateMonth6 + "-" + endDateDay6;
+		int siteId = 1;
+   		int processId = 1;
+
 
 		// データベースへのアクセス開始
         Connection con = null;
         Statement stmt = null;
+       	ResultSet rs = null;
 
+       	try {
+       		// JDBCドライバをロード
+       		Class.forName("com.mysql.jdbc.Driver");
+        	// データベースに接続するConnectionオブジェクトの取得
+        	con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sample", "root", "root");
+        	// データベース操作を行うためのStatementオブジェクトの取得
+        	stmt = con.createStatement();
+        	// SQL()を実行して、結果を得る
+        	rs = stmt.executeQuery("select count(*) from site");
+        	while (rs.next()) {
+        		siteId = rs.getInt("count(*)");
+        	}
+        	rs.close();
+        	rs = stmt.executeQuery("select count(*) from process");
+        	while (rs.next()) {
+        		processId = rs.getInt("count(*)");
+        	}
+        	rs.close();
+        }catch (Exception e) {
+        	e.printStackTrace();
+        	response.sendRedirect("./Error.jsp");
+        }finally {
+        	// データベースとの接続をクローズ
+        	try { rs.close(); } catch (Exception e) {}
+            try { stmt.close(); } catch (Exception e) {}
+            try { con.close(); } catch (Exception e) {}
+        }
+
+        // データベースへのアクセス開始
+       	con = null;
+        stmt = null;
         try {
         	// JDBCドライバをロード
         	Class.forName("com.mysql.jdbc.Driver");
@@ -115,38 +151,60 @@ public class RegistService extends HttpServlet {
             // データベース操作を行うためのStatementオブジェクトの取得
             stmt = con.createStatement();
 	        //SQL文を挿入
-	        String sql = "INSERT INTO site (siteName, responsible, worker, deadLine)" + "VALUES ('"+siteName+"', '"+responsible+"', '"+worker+"', '"+deadLine+"')";
-	        String sql2 = "INSERT INTO process (processName, startDate, endDate)" + "VALUES ('"+processName1+"', '"+startDate1+"', '"+endDate1+"')";
-	        String sql3 = "INSERT INTO process (processName, startDate, endDate)" + "VALUES ('"+processName2+"', '"+startDate2+"', '"+endDate2+"')";
-	        String sql4 = "INSERT INTO process (processName, startDate, endDate)" + "VALUES ('"+processName3+"', '"+startDate3+"', '"+endDate3+"')";
-	        String sql5 = "INSERT INTO process (processName, startDate, endDate)" + "VALUES ('"+processName4+"', '"+startDate4+"', '"+endDate4+"')";
-	        String sql6 = "INSERT INTO process (processName, startDate, endDate)" + "VALUES ('"+processName5+"', '"+startDate5+"', '"+endDate5+"')";
-	        String sql7 = "INSERT INTO process (processName, startDate, endDate)" + "VALUES ('"+processName6+"', '"+startDate6+"', '"+endDate6+"')";
+            siteId+=1;
+	        String sql = "INSERT INTO site (siteId, siteName, responsible, worker, deadLine)" + "VALUES ('"+siteId+"', '"+siteName+"', '"+responsible+"', '"+worker+"', '"+deadLine+"')";
+	        processId+=1;
+	        String sql2 = "INSERT INTO process (processId, processName, startDate, endDate)" + "VALUES ('"+processId+"', '"+processName1+"', '"+startDate1+"', '"+endDate1+"')";
+	        String sql22 = "INSERT INTO site_pro (siteId, processId)" + "VALUES ('"+siteId+"', '"+processId+"')";
+	        processId+=1;
+	        String sql3 = "INSERT INTO process (processId, processName, startDate, endDate)" + "VALUES ('"+processId+"', '"+processName2+"', '"+startDate2+"', '"+endDate2+"')";
+	        String sql33 = "INSERT INTO site_pro (siteId, processId)" + "VALUES ('"+siteId+"', '"+processId+"')";
+	        processId+=1;
+	        String sql4 = "INSERT INTO process (processId, processName, startDate, endDate)" + "VALUES ('"+processId+"', '"+processName3+"', '"+startDate3+"', '"+endDate3+"')";
+	        String sql44 = "INSERT INTO site_pro (siteId, processId)" + "VALUES ('"+siteId+"', '"+processId+"')";
+	        processId+=1;
+	        String sql5 = "INSERT INTO process (processId, processName, startDate, endDate)" + "VALUES ('"+processId+"', '"+processName4+"', '"+startDate4+"', '"+endDate4+"')";
+	        String sql55 = "INSERT INTO site_pro (siteId, processId)" + "VALUES ('"+siteId+"', '"+processId+"')";
+	        processId+=1;
+	        String sql6 = "INSERT INTO process (processId, processName, startDate, endDate)" + "VALUES ('"+processId+"', '"+processName5+"', '"+startDate5+"', '"+endDate5+"')";
+	        String sql66 = "INSERT INTO site_pro (siteId, processId)" + "VALUES ('"+siteId+"', '"+processId+"')";
+	        processId+=1;
+	        String sql7 = "INSERT INTO process (processId, processName, startDate, endDate)" + "VALUES ('"+processId+"', '"+processName6+"', '"+startDate6+"', '"+endDate6+"')";
+	        String sql77 = "INSERT INTO site_pro (siteId, processId)" + "VALUES ('"+siteId+"', '"+processId+"')";
+
 
 	        // INSERT文を実行
+
             stmt.executeUpdate(sql);
             if(processName1 != ""){
             	stmt.executeUpdate(sql2);
+            	stmt.executeUpdate(sql22);
             }
             if(processName2 != ""){
             	stmt.executeUpdate(sql3);
+            	stmt.executeUpdate(sql33);
             }
             if(processName3 != ""){
             	stmt.executeUpdate(sql4);
+            	stmt.executeUpdate(sql44);
             }
             if(processName4 != ""){
             	stmt.executeUpdate(sql5);
+            	stmt.executeUpdate(sql55);
             }
             if(processName5 != ""){
             	stmt.executeUpdate(sql6);
+            	stmt.executeUpdate(sql66);
             }
             if(processName6 != ""){
             	stmt.executeUpdate(sql7);
+            	stmt.executeUpdate(sql77);
             }
-
-            // DBへ登録後List.jspへ
+         // DBへ登録後List.jspへ
             RequestDispatcher rd = request.getRequestDispatcher("./List.jsp");
             rd.forward(request, response);
+
+
         }catch (Exception e) {
         	e.printStackTrace();
         	response.sendRedirect("./Error.jsp");
@@ -155,5 +213,6 @@ public class RegistService extends HttpServlet {
             try { stmt.close(); } catch (Exception e) {}
             try { con.close(); } catch (Exception e) {}
         }
+
 	}
 }
