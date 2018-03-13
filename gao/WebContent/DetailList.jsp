@@ -14,6 +14,10 @@
 <link rel="STYLESHEET" href="main.css" type="text/css">
 </head>
 <body>
+<%
+// siteId取得
+	String siteId = request.getParameter("siteId");
+%>
 <h1>現場詳細</h1>
 	<hr />
 	<br />
@@ -150,8 +154,8 @@
 					</form>
 				</td>
 				<td>
-					<form action="Delete.jsp">
-						<input type="submit" value="削除">
+					<form action="Delete.jsp?siteId=<%= siteId %>" method="post">
+						<input type="submit" value="削除" />
 					</form>
 				</td>
 				<td>

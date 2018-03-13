@@ -53,12 +53,12 @@ public class DeleteService extends HttpServlet {
 	 		// データベース操作を行うためのStatementオブジェクトの取得
 			stmt = con.createStatement();
 			// SQL()を実行して、結果を得る
-			rs = stmt.executeQuery("select siteId, processId from site CROSS JOIN process");
+			rs = stmt.executeQuery("select siteId, processId from site left outer join site_pro using (siteId) left outer join process using (processId)");
 			// 得られた結果をレコードごとに表示
 			while (rs.next()) {
 				if(siteId.equals(rs.getString("siteId"))){
-				String sql2 = "DELETE FROM process WHERE processId = " + rs.getString("processId");
-				pst2 = con.prepareStatement(sql2);
+				String sql = "DELETE FROM process WHERE processId = " + rs.getString("processId");
+				pst2 = con.prepareStatement(sql);
 		 		pst2.executeUpdate();
 				}
 			}
