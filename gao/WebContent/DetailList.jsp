@@ -34,7 +34,17 @@
 				<td><%=request.getAttribute("siteName")%></td>
 				<td><%=request.getAttribute("responsible")%></td>
 				<td><%=request.getAttribute("deadLine")%></td>
-				<td><%=request.getAttribute("compDate")%></td>
+				<%
+			if(request.getAttribute("compDate") != null){
+%>
+				<td><%= request.getAttribute("compDate") %></td>
+<%
+			}else{
+%>
+				<td><%= "未完了" %></td>
+<%
+			}
+%>
 
 			</tr>
 		</table>
@@ -55,15 +65,11 @@
 				cal_start.set(Integer.parseInt(startDay[0]), Integer.parseInt(startDay[1]),Integer.parseInt(startDay[2]));
 				cal_startDay.add(cal_start);
 				%>
-				<p><%=name %></p>
-				<p><%=cal_start.get(Calendar.YEAR) %>/<%=cal_start.get(Calendar.MONTH) %>/<%=cal_start.get(Calendar.DATE) %></p>
 				<%
 				Calendar cal_end = Calendar.getInstance();
 				cal_end.set(Integer.parseInt(endDay[0]), Integer.parseInt(endDay[1]), Integer.parseInt(endDay[2]));
 				cal_endDay.add(cal_end);
 				%>
-				<p><%=name %></p>
-				<p><%=cal_end.get(Calendar.YEAR) %>/<%=cal_end.get(Calendar.MONTH) %>/<%=cal_end.get(Calendar.DATE) %></p>
 				<%
 			}
 			int ys = cal_startDay.get(0).get(Calendar.YEAR);
@@ -80,7 +86,6 @@
 				}
 			}
 			%>
-			<p><%=cal_start_top.get(Calendar.YEAR) %>/<%=cal_start_top.get(Calendar.MONTH) %>/<%=cal_start_top.get(Calendar.DATE) %></p>
 			<%
 			int ye = cal_endDay.get(0).get(Calendar.YEAR);
 			int me = cal_endDay.get(0).get(Calendar.MONTH);
@@ -100,7 +105,6 @@
 			int m = cal_start_top.get(Calendar.MONTH);
 			int d = cal_start_top.get(Calendar.DATE);
 			%>
-			<p><%=cal_end_top.get(Calendar.YEAR) %>/<%=cal_end_top.get(Calendar.MONTH) %>/<%=cal_end_top.get(Calendar.DATE) %></p>
 		<table border="0" class="list">
 			<tr>
 				<td>日程</td>
