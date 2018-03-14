@@ -54,12 +54,12 @@
 					<th>作業者名</th>
 					<td>
 					<% for (int i = 0 ; i < worker.length ; i++){ %>
-					<input type="text" name="worker1" value="<%= worker[i]%>" placeholder="作業者名" size="12">
+					<input type="text" name="worker<%= i+1%>" value="<%= worker[i]%>" placeholder="作業者名" size="12">
 				    <% count++;
 				    }
-					while(length - count > 0){
+					for(int i= count+1;length - count > 0;i++){
 				length--;%>
-					<input type="text" name="worker1" value="" placeholder="作業者名" size="12">
+					<input type="text" name="worker<%= i%>" value="" placeholder="作業者名" size="12">
 				<%} %>
 				    </td>
 				</tr>
@@ -86,29 +86,29 @@
 		String[] endDate = hoge4.split("-",0);%>
 				<tr>
 					<th>作業日程</th>
-					<td><input type="text" name="processName1" value="<%= rs.getString("processName")%>" placeholder="工程名">
-						<input type="text" name="deadLineYear" value="<%= startDate[0]%>" size="2">/
-						<input type="text" name="deadLineMonth" value="<%= startDate[1]%>" size="1">/
-						<input type="text" name="deadLineDay" value="<%= startDate[2]%>" size="1">
+					<td><input type="text" name="processName<%= count+1%>" value="<%= rs.getString("processName")%>" placeholder="工程名">
+						<input type="text" name="startYear<%= count+1%>" value="<%= startDate[0]%>" size="2">/
+						<input type="text" name="startMonth<%= count+1%>" value="<%= startDate[1]%>" size="1">/
+						<input type="text" name="startDay<%= count+1%>" value="<%= startDate[2]%>" size="1">
 						～
-						<input type="text" name="deadLineYear" value="<%= endDate[0]%>" size="2">/
-						<input type="text" name="deadLineMonth" value="<%= endDate[1]%>" size="1">/
-						<input type="text" name="deadLineDay" value="<%= endDate[2]%>" size="1">
+						<input type="text" name="endYear<%= count+1%>" value="<%= endDate[0]%>" size="2">/
+						<input type="text" name="endMonth<%= count+1%>" value="<%= endDate[1]%>" size="1">/
+						<input type="text" name="endDay<%= count+1%>" value="<%= endDate[2]%>" size="1">
 					</td>
 				</tr>
 				<%count++;}}
-				while(length - count > 0){
+		for(int i= count+1;length - count > 0;i++){
 				length--;%>
 				<tr>
 					<th>作業日程</th>
-						<td><input type="text" name="processName" value="" placeholder="工程名">
-							<input type="text" name="deadLineYear" value="2018" size="2">/
-							<input type="text" name="deadLineMonth" value="01" size="1">/
-							<input type="text" name="deadLineDay" value="01" size="1">
+						<td><input type="text" name="processName<%= i%>" value="" placeholder="工程名">
+							<input type="text" name="startYear<%= i%>" value="2018" size="2">/
+							<input type="text" name="startMonth<%= i%>" value="01" size="1">/
+							<input type="text" name="startDay<%= i%>" value="01" size="1">
 						～
-							<input type="text" name="deadLineYear" value="2018" size="2">/
-							<input type="text" name="deadLineMonth" value="01" size="1">/
-							<input type="text" name="deadLineDay" value="01" size="1">
+							<input type="text" name="endYear<%= i%>" value="2018" size="2">/
+							<input type="text" name="endMonth<%= i%>" value="01" size="1">/
+							<input type="text" name="endDay<%= i%>" value="01" size="1">
 						</td>
 					</tr>
 				<%} %>
