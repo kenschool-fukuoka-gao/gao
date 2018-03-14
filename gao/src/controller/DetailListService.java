@@ -14,7 +14,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.ProcessBean;
-
+/**
+ * @author 木下、古屋
+ *
+ * @version 1.0
+ */
 /**
  * Servlet implementation class DetailListService
  */

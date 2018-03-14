@@ -8,7 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+/**
+ * @author 大瀬戸、江頭
+ *
+ * @version 1.0
+ */
 /**
  * Servlet implementation class LogoutService
  */
