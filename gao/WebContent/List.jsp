@@ -63,7 +63,6 @@
 <%
 		// 得られた結果をレコードごとに表示
 		while (rs.next()) {
-			String hoge = rs.getString("worker");
 %>
 			<tr>
 				<%-- indexpsの現場名を表示 --%>
@@ -90,7 +89,7 @@
 		}
 	}catch (Exception e) {
 		e.printStackTrace();
-		response.sendRedirect("/Error.jsp");
+		response.sendRedirect("./Error.jsp");
 	}finally {
 		// データベースとの接続をクローズ
 		try { rs.close(); } catch (Exception e) {}
