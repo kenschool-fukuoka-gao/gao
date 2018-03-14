@@ -159,8 +159,8 @@
 		<table>
 			<tr>
 				<td>
-					<form action="Update.jsp">
-						<input type="submit" value="詳細更新">
+					<form action="Update.jsp?siteId=<%= siteId %>">
+						<input type="submit" value="詳細更新" />
 					</form>
 				</td>
 				<td>
@@ -170,7 +170,7 @@
 				</td>
 				<td>
 					<form action="List.jsp">
-						<input type="submit" value="戻る">
+						<input type="submit" value="戻る" />
 					</form>
 				</td>
 			</tr>

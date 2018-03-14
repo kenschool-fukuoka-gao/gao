@@ -12,6 +12,7 @@
 <link rel="STYLESHEET" href="main.css" type="text/css">
 </head>
 <body>
+<% String siteId = request.getParameter("siteId"); %>
 <%
 	int length = 6;
 	int count = 0;
