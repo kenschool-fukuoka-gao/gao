@@ -41,7 +41,7 @@
 		String hoge2 = rs.getString("deadLine");
 		String[] deadLine = hoge2.split("-",0);%>
 		<table border="0">
-			<form action="./RegistService" method="post">
+			<form action="./UpdateService?siteId=<%= siteId %>" method="post">
 				<tr>
 					<th>現場名</th>
 					<td><input type="text" name="siteName" value="<%= rs.getString("siteName")%>" size="24"></td>
