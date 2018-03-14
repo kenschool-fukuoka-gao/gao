@@ -159,7 +159,7 @@
 		<table>
 			<tr>
 				<td>
-					<form action="Update.jsp?siteId=<%= siteId %>">
+					<form action="Update.jsp?siteId=<%= siteId %>" method="post">
 						<input type="submit" value="詳細更新" />
 					</form>
 				</td>

@@ -35,6 +35,7 @@
 	<div align="center">
 	<%// 得られた結果をレコードごとに表示
 	while (rs.next()) {
+		if(siteId.equals(rs.getString("siteId"))){
 		String hoge = rs.getString("worker");
 		String[] worker = hoge.split(" ",0);
 		String hoge2 = rs.getString("deadLine");
@@ -54,7 +55,12 @@
 					<td>
 					<% for (int i = 0 ; i < worker.length ; i++){ %>
 					<input type="text" name="worker1" value="<%= worker[i]%>" placeholder="作業者名" size="12">
-				    <% } %>
+				    <% count++;
+				    }
+					while(length - count > 0){
+				length--;%>
+					<input type="text" name="worker1" value="" placeholder="作業者名" size="12">
+				<%} %>
 				    </td>
 				</tr>
 				<tr>
@@ -66,11 +72,14 @@
 					</td>
 				</tr>
 
-				<% }
+				<% }}
 	rs.close();
-	rs = stmt.executeQuery("select * from process");
+	rs = stmt.executeQuery("select * from process LEFT OUTER JOIN site_pro USING (processId) LEFT OUTER JOIN site USING (siteId)");
+	length = 6;
+	count = 0;
 		// 得られた結果をレコードごとに表示
 		while (rs.next()) {
+			if(siteId.equals(rs.getString("siteId"))){
 		String hoge3 = rs.getString("startDate");
 		String[] startDate = hoge3.split("-",0);
 		String hoge4 = rs.getString("endDate");
@@ -87,12 +96,12 @@
 						<input type="text" name="deadLineDay" value="<%= endDate[2]%>" size="1">
 					</td>
 				</tr>
-				<%count++;}
+				<%count++;}}
 				while(length - count > 0){
 				length--;%>
 				<tr>
 					<th>作業日程</th>
-						<td><input type="text" name="processName1" value="" placeholder="工程名">
+						<td><input type="text" name="processName" value="" placeholder="工程名">
 							<input type="text" name="deadLineYear" value="2018" size="2">/
 							<input type="text" name="deadLineMonth" value="01" size="1">/
 							<input type="text" name="deadLineDay" value="01" size="1">
