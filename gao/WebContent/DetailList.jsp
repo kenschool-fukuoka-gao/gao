@@ -68,12 +68,12 @@
 				String[] startDay = (processBean.getStartDate()).split("-", 0);
 				String[] endDay = (processBean.getEndDate()).split("-", 0);
 				Calendar cal_start = Calendar.getInstance();
-				cal_start.set(Integer.parseInt(startDay[0]), Integer.parseInt(startDay[1]),Integer.parseInt(startDay[2]));
+				cal_start.set(Integer.parseInt(startDay[0]), Integer.parseInt(startDay[1])-1,Integer.parseInt(startDay[2]));
 				cal_startDay.add(cal_start);
 				%>
 				<%
 				Calendar cal_end = Calendar.getInstance();
-				cal_end.set(Integer.parseInt(endDay[0]), Integer.parseInt(endDay[1]), Integer.parseInt(endDay[2]));
+				cal_end.set(Integer.parseInt(endDay[0]), Integer.parseInt(endDay[1])-1, Integer.parseInt(endDay[2]));
 				cal_endDay.add(cal_end);
 				%>
 				<%
@@ -118,7 +118,7 @@
 
 					do {
 				%>
-				<td><%=cal_start_top.get(Calendar.MONTH)%>/<%=cal_start_top.get(Calendar.DATE)%></td>
+				<td><%=cal_start_top.get(Calendar.MONTH)+1%>/<%=cal_start_top.get(Calendar.DATE)%></td>
 				<%
 					cal_start_top.add(Calendar.DATE, 1);
 					} while (cal_start_top.before(cal_end_top));
