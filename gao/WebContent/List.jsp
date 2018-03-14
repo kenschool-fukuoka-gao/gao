@@ -25,7 +25,7 @@
 		// データベース操作を行うためのStatementオブジェクトの取得
 		stmt = con.createStatement();
 		// SQL()を実行して、結果を得る
-		rs = stmt.executeQuery("select siteId, siteName, responsible, worker, deadLine, compDate from site");
+		rs = stmt.executeQuery("select siteId, siteName, responsible, worker, deadLine, compDate from site ORDER BY siteId DESC");
 		String employeeName = (String) session.getAttribute("employeeName");
 %>
 <h1>現場一覧</h1>

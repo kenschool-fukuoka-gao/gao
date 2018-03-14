@@ -106,6 +106,7 @@ public class UpdateService extends HttpServlet {
 		java.sql.Date compDate= null;
 		String sql = null;
 		String siteId = request.getParameter("siteId");
+		check = "1";
 
 		if(check != null){
 			Date date = new Date();
@@ -131,11 +132,11 @@ public class UpdateService extends HttpServlet {
             // データベース操作を行うためのStatementオブジェクトの取得
             stmt = con.createStatement();
 	        // SQL文を挿入
-            if(check == null){
-            	sql = "UPDATE site SET siteName = '"+siteName+"', responsible = '"+responsible+"', worker = '"+worker+"', deadLine = '"+deadLine+"' WHERE siteId = '"+siteId+"'";
-            }else{
-            	sql = "UPDATE site SET siteName = '"+siteName+"', responsible = '"+responsible+"', worker = '"+worker+"', deadLine = '"+deadLine+"', compDate = '"+compDate+"' WHERE siteId = '+siteId+'";
-            }
+            //if(check == null){
+            	sql = "UPDATE site SET siteName = 'あ', responsible = 'い', worker = 'う', deadLine = '2019-04-22' WHERE siteId = '4'";
+            //}else{
+            //	sql = "UPDATE site SET siteName = '"+siteName+"', responsible = '"+responsible+"', worker = '"+worker+"', deadLine = '"+deadLine+"', compDate = '"+compDate+"' WHERE siteId = '"+siteId+"'";
+            //}
             String sql2 = "UPDATE process LEFT JOIN site_pro USING (processId) LEFT JOIN site USING (siteId) SET processName = '"+processName1+"', startDate = '"+startDate1+"', endDate = '"+endDate1+"' WHERE siteId = '+siteId+'";
 	        String sql3 = "UPDATE process LEFT JOIN site_pro USING (processId) LEFT JOIN site USING (siteId) SET processName = '"+processName2+"', startDate = '"+startDate2+"', endDate = '"+endDate2+"' WHERE siteId = '+siteId+'";
 	        String sql4 = "UPDATE process LEFT JOIN site_pro USING (processId) LEFT JOIN site USING (siteId) SET processName = '"+processName3+"', startDate = '"+startDate3+"', endDate = '"+endDate3+"' WHERE siteId = '+siteId+'";
