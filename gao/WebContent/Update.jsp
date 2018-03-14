@@ -87,13 +87,13 @@
 				<tr>
 					<th>作業日程</th>
 					<td><input type="text" name="processName<%= count+1%>" value="<%= rs.getString("processName")%>" placeholder="工程名">
-						<input type="text" name="startYear<%= count+1%>" value="<%= startDate[0]%>" size="2">/
-						<input type="text" name="startMonth<%= count+1%>" value="<%= startDate[1]%>" size="1">/
-						<input type="text" name="startDay<%= count+1%>" value="<%= startDate[2]%>" size="1">
+						<input type="text" name="startDateYear<%= count+1%>" value="<%= startDate[0]%>" size="2">/
+						<input type="text" name="startDateMonth<%= count+1%>" value="<%= startDate[1]%>" size="1">/
+						<input type="text" name="startDateDay<%= count+1%>" value="<%= startDate[2]%>" size="1">
 						～
-						<input type="text" name="endYear<%= count+1%>" value="<%= endDate[0]%>" size="2">/
-						<input type="text" name="endMonth<%= count+1%>" value="<%= endDate[1]%>" size="1">/
-						<input type="text" name="endDay<%= count+1%>" value="<%= endDate[2]%>" size="1">
+						<input type="text" name="endDateYear<%= count+1%>" value="<%= endDate[0]%>" size="2">/
+						<input type="text" name="endDateMonth<%= count+1%>" value="<%= endDate[1]%>" size="1">/
+						<input type="text" name="endDateDay<%= count+1%>" value="<%= endDate[2]%>" size="1">
 					</td>
 				</tr>
 				<%count++;}}
@@ -102,13 +102,13 @@
 				<tr>
 					<th>作業日程</th>
 						<td><input type="text" name="processName<%= i%>" value="" placeholder="工程名">
-							<input type="text" name="startYear<%= i%>" value="2018" size="2">/
-							<input type="text" name="startMonth<%= i%>" value="01" size="1">/
-							<input type="text" name="startDay<%= i%>" value="01" size="1">
+							<input type="text" name="startDateYear<%= i%>" value="2018" size="2">/
+							<input type="text" name="startDateMonth<%= i%>" value="01" size="1">/
+							<input type="text" name="startDateDay<%= i%>" value="01" size="1">
 						～
-							<input type="text" name="endYear<%= i%>" value="2018" size="2">/
-							<input type="text" name="endMonth<%= i%>" value="01" size="1">/
-							<input type="text" name="endDay<%= i%>" value="01" size="1">
+							<input type="text" name="endDateYear<%= i%>" value="2018" size="2">/
+							<input type="text" name="endDateMonth<%= i%>" value="01" size="1">/
+							<input type="text" name="endDateDay<%= i%>" value="01" size="1">
 						</td>
 					</tr>
 				<%} %>
