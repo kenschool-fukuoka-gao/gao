@@ -21,6 +21,10 @@
 </head>
 <body>
 <%
+	try {
+
+%>
+<%
 // siteId取得
 	String siteId = request.getParameter("siteId");
 %>
@@ -182,5 +186,11 @@
 
 		</table>
 	</div>
+<%
+	}catch (Exception e) {
+		e.printStackTrace();
+		response.sendRedirect("./Error.jsp");
+	}
+%>
 </body>
 </html>
