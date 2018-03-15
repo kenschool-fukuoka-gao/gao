@@ -6,6 +6,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -104,14 +106,14 @@ public class UpdateService extends HttpServlet {
 		String endDateMonth6 = request.getParameter("endDateMonth6");
 		String endDateDay6 = request.getParameter("endDateDay6");
 		String endDate6 = endDateYear6 + "-" + endDateMonth6 + "-" + endDateDay6;
-		//String check = request.getParameter("check");
-		//java.sql.Date compDate= null;
+		String check = request.getParameter("check");
+		java.sql.Date compDate= null;
 		String sql = null;
 		String siteId = request.getParameter("siteId");
 		ResultSet rs = null;
 		List<Integer> processId = new ArrayList<Integer>();
 
-		/*if(check != null){
+		if(check != null){
 			Date date = new Date();
 			Calendar cal = Calendar.getInstance();
 			cal.setTime(date);
@@ -120,7 +122,7 @@ public class UpdateService extends HttpServlet {
 			cal.set(Calendar.SECOND, 0);
 			cal.set(Calendar.MILLISECOND, 0);
 			compDate = new java.sql.Date(date.getTime());
-		}*/
+		}
 
 		// データベースへのアクセス開始
         Connection con = null;
@@ -140,11 +142,11 @@ public class UpdateService extends HttpServlet {
     			processId.add(rs.getInt("processId"));
     		}
 	        // SQL文を挿入
-            //if(check == null){
+            if(check == null){
             	sql = "UPDATE site SET siteName = '"+siteName+"', responsible = '"+responsible+"', worker = '"+worker+"', deadLine = '"+deadLine+"' WHERE siteId = '"+siteId+"'";
-            //}else{
-            //	sql = "UPDATE site SET siteName = '"+siteName+"', responsible = '"+responsible+"', worker = '"+worker+"', deadLine = '"+deadLine+"', compDate = '"+compDate+"' WHERE siteId = '"+siteId+"'";
-            //}
+            }else{
+            	sql = "UPDATE site SET siteName = '"+siteName+"', responsible = '"+responsible+"', worker = '"+worker+"', deadLine = '"+deadLine+"', compDate = '"+compDate+"' WHERE siteId = '"+siteId+"'";
+            }
             String sql2 = "UPDATE process LEFT OUTER JOIN site_pro USING (processId) SET processName = '"+processName1+"', startDate = '"+startDate1+"', endDate = '"+endDate1+"' WHERE  siteId = '"+siteId+"' AND processId = '"+processId.get(0)+"'";
             String sql3 = "UPDATE process LEFT OUTER JOIN site_pro USING (processId) SET processName = '"+processName2+"', startDate = '"+startDate2+"', endDate = '"+endDate2+"' WHERE siteId = '"+siteId+"' AND processId = '"+processId.get(1)+"'";
             String sql4 = "UPDATE process LEFT OUTER JOIN site_pro USING (processId) SET processName = '"+processName3+"', startDate = '"+startDate3+"', endDate = '"+endDate3+"' WHERE siteId = '"+siteId+"' AND processId = '"+processId.get(2)+"'";
