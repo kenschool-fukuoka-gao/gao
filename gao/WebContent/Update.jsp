@@ -1,8 +1,3 @@
-<!--
-	@author 大瀬戸、江頭
-
-    @version 1.0
- -->
 <?xml version="1.0" encoding="UTF-8" ?>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -79,7 +74,7 @@
 
 				<% }}
 	rs.close();
-	rs = stmt.executeQuery("select * from process LEFT OUTER JOIN site_pro USING (processId) LEFT OUTER JOIN site USING (siteId)");
+	rs = stmt.executeQuery("select * from process LEFT OUTER JOIN site_pro USING (processId)");
 	length = 6;
 	count = 0;
 		// 得られた結果をレコードごとに表示
@@ -102,7 +97,7 @@
 					</td>
 				</tr>
 				<%count++;}}
-		for(int i= count+1;length - count > 0;i++){
+		for(int i= count+1;length - count < 0;i++){
 				length--;%>
 				<tr>
 					<th>作業日程</th>

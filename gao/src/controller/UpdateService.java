@@ -13,11 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-/**
- * @author 大瀬戸、江頭
- *
- * @version 1.0
- */
+
 /**
  * Servlet implementation class UpdateService
  */
@@ -137,16 +133,16 @@ public class UpdateService extends HttpServlet {
             stmt = con.createStatement();
 	        // SQL文を挿入
             //if(check == null){
-            	sql = "UPDATE site SET siteName = 'あ', responsible = 'い', worker = 'う', deadLine = '2019-04-22' WHERE siteId = '4'";
+            	sql = "UPDATE site SET siteName = '"+siteName+"', responsible = '"+responsible+"', worker = '"+worker+"', deadLine = '"+deadLine+"' WHERE siteId = '"+siteId+"'";
             //}else{
             //	sql = "UPDATE site SET siteName = '"+siteName+"', responsible = '"+responsible+"', worker = '"+worker+"', deadLine = '"+deadLine+"', compDate = '"+compDate+"' WHERE siteId = '"+siteId+"'";
             //}
-            String sql2 = "UPDATE process LEFT JOIN site_pro USING (processId) LEFT JOIN site USING (siteId) SET processName = '"+processName1+"', startDate = '"+startDate1+"', endDate = '"+endDate1+"' WHERE siteId = '+siteId+'";
-	        String sql3 = "UPDATE process LEFT JOIN site_pro USING (processId) LEFT JOIN site USING (siteId) SET processName = '"+processName2+"', startDate = '"+startDate2+"', endDate = '"+endDate2+"' WHERE siteId = '+siteId+'";
-	        String sql4 = "UPDATE process LEFT JOIN site_pro USING (processId) LEFT JOIN site USING (siteId) SET processName = '"+processName3+"', startDate = '"+startDate3+"', endDate = '"+endDate3+"' WHERE siteId = '+siteId+'";
-	        String sql5 = "UPDATE process LEFT JOIN site_pro USING (processId) LEFT JOIN site USING (siteId) SET processName = '"+processName4+"', startDate = '"+startDate4+"', endDate = '"+endDate4+"' WHERE siteId = '+siteId+'";
-	        String sql6 = "UPDATE process LEFT JOIN site_pro USING (processId) LEFT JOIN site USING (siteId) SET processName = '"+processName5+"', startDate = '"+startDate5+"', endDate = '"+endDate5+"' WHERE siteId = '+siteId+'";
-	        String sql7 = "UPDATE process LEFT JOIN site_pro USING (processId) LEFT JOIN site USING (siteId) SET processName = '"+processName6+"', startDate = '"+startDate6+"', endDate = '"+endDate6+"' WHERE siteId = '+siteId+'";
+            String sql2 = "UPDATE process LEFT OUTER JOIN site_pro USING (processId) SET processName = '"+processName1+"', startDate = '"+startDate1+"', endDate = '"+endDate1+"' WHERE siteId = '"+siteId+"'";
+            String sql3 = "UPDATE process LEFT OUTER JOIN site_pro USING (processId) SET processName = '"+processName2+"', startDate = '"+startDate2+"', endDate = '"+endDate2+"' WHERE siteId = '"+siteId+"'";
+            String sql4 = "UPDATE process LEFT OUTER JOIN site_pro USING (processId) SET processName = '"+processName3+"', startDate = '"+startDate3+"', endDate = '"+endDate3+"' WHERE siteId = '"+siteId+"'";
+            String sql5 = "UPDATE process LEFT OUTER JOIN site_pro USING (processId) SET processName = '"+processName4+"', startDate = '"+startDate4+"', endDate = '"+endDate4+"' WHERE siteId = '"+siteId+"'";
+            String sql6 = "UPDATE process LEFT OUTER JOIN site_pro USING (processId) SET processName = '"+processName5+"', startDate = '"+startDate5+"', endDate = '"+endDate5+"' WHERE siteId = '"+siteId+"'";
+            String sql7 = "UPDATE process LEFT OUTER JOIN site_pro USING (processId) SET processName = '"+processName6+"', startDate = '"+startDate6+"', endDate = '"+endDate6+"' WHERE siteId = '"+siteId+"'";
 
 	        // INSERT文を実行
             stmt.executeUpdate(sql);
@@ -170,7 +166,7 @@ public class UpdateService extends HttpServlet {
             }
 
             // DBへ更新後DetailList.jspへ
-            RequestDispatcher rd = request.getRequestDispatcher("./DetailList.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("./List.jsp");
             rd.forward(request, response);
         }catch (Exception e) {
         	e.printStackTrace();
