@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *			江頭
  * @version 1.0
  */
-/**
+/**江頭 大瀬戸
  * Servlet implementation class DeleteService
  */
 @WebServlet("/DeleteService")
@@ -77,7 +77,7 @@ public class DeleteService extends HttpServlet {
 			rd.forward(request, response);
 		}catch(Exception e){
 			e.printStackTrace();
-			response.sendRedirect("./Error.jsp");
+			//response.sendRedirect("./Error.jsp");
 		}finally{
 			// データベースとの接続をクローズ
 			try{

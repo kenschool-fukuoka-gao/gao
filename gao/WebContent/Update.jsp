@@ -114,8 +114,12 @@
 							<input type="text" name="endDateYear<%= i%>" value="2018" size="2">/
 							<input type="text" name="endDateMonth<%= i%>" value="01" size="1">/
 							<input type="text" name="endDateDay<%= i%>" value="01" size="1">
+
 						</td>
 					</tr>
+					<% for(int n = 1; i <= 6; i++){ %>
+							<input type="submit" name="<%= n %>" value="削除"/>
+							<%} %>
 				<%} %>
 				<tr>
 					<th class="add_field">完了</th>

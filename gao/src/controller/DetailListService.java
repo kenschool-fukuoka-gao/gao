@@ -19,7 +19,7 @@ import model.ProcessBean;
  *
  * @version 1.0
  */
-/**
+/**江頭 大瀬戸
  * Servlet implementation class DetailListService
  */
 @WebServlet("/DetailListService")

@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ *  @author 大瀬戸、江頭
  * Servlet implementation class UpdateService
  */
 @WebServlet("/UpdateService")
@@ -184,42 +185,42 @@ public class UpdateService extends HttpServlet {
             if(processName1 != null){
             	stmt.executeUpdate(sql2);
             }
-            else if (processId.get(0) == 0){
+            else if (processId.get(0) == null){
             	stmt.executeUpdate(sql22);
             	stmt.executeUpdate(sql222);
             }
             if(processName2 != null){
             	stmt.executeUpdate(sql3);
             }
-            else if (processId.get(1) == 0){
+            else if (processId.get(1) == null){
             	stmt.executeUpdate(sql33);
             	stmt.executeUpdate(sql333);
             }
             if(processName3 != null){
             	stmt.executeUpdate(sql4);
             }
-            else if (processId.get(2) == 0){
+            else if (processId.get(2) == null){
             	stmt.executeUpdate(sql44);
             	stmt.executeUpdate(sql444);
             }
             if(processName4 != null){
             	stmt.executeUpdate(sql5);
             }
-            else if (processId.get(3) == 0){
+            else if (processId.get(3) == null){
             	stmt.executeUpdate(sql55);
             	stmt.executeUpdate(sql555);
             }
             if(processName5 != null){
             	stmt.executeUpdate(sql6);
             }
-            else if (processId.get(4) == 0){
+            else if (processId.get(4) == null){
             	stmt.executeUpdate(sql66);
             	stmt.executeUpdate(sql666);
             }
             if(processName6 != null){
             	stmt.executeUpdate(sql7);
             }
-            else if (processId.get(5) == 0){
+            else if (processId.get(5) == null){
             	stmt.executeUpdate(sql77);
             	stmt.executeUpdate(sql777);
             }
