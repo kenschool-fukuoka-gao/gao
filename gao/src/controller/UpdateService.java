@@ -110,7 +110,8 @@ public class UpdateService extends HttpServlet {
 		String sql = null;
 		String siteId = request.getParameter("siteId");
 		ResultSet rs = null;
-		List<String> processId = new ArrayList<String>();
+		List<Integer> processId = new ArrayList<Integer>();
+		int num = 1;
 
 		if(check != null){
 			Date date = new Date();
@@ -135,13 +136,18 @@ public class UpdateService extends HttpServlet {
                 "jdbc:mysql://localhost:3306/sample", "root", "root");
             // データベース操作を行うためのStatementオブジェクトの取得
             stmt = con.createStatement();
+            rs = stmt.executeQuery("select count(*) from process");
+        	while (rs.next()) {
+        		num = rs.getInt("count(*)")+1;
+        	}
+        	rs.close();
          // SQL()を実行して、結果を得る
     		rs = stmt.executeQuery("select processId from site LEFT OUTER JOIN site_pro USING (siteId) WHERE siteId = '"+siteId+"'");
     		while (rs.next()) {
-    			processId.add(rs.getString("processId"));
+    			processId.add(rs.getInt("processId"));
     		}
     		for(int i = processId.size();i < 6;i++){
-    				processId.add("");
+    				processId.add(0);
     		}
 	        // SQL文を挿入
             if(check == null){
@@ -150,40 +156,75 @@ public class UpdateService extends HttpServlet {
             	sql = "UPDATE site SET siteName = '"+siteName+"', responsible = '"+responsible+"', worker = '"+worker+"', deadLine = '"+deadLine+"', compDate = '"+compDate+"' WHERE siteId = '"+siteId+"'";
             }
             String sql2 = "UPDATE process LEFT OUTER JOIN site_pro USING (processId) SET processName = '"+processName1+"', startDate = '"+startDate1+"', endDate = '"+endDate1+"' WHERE  siteId = '"+siteId+"' AND processId = '"+processId.get(0)+"'";
-            String sql22 = "INSERT INTO process VALUES ('"+processId.get(0)+"', '"+processName1+"', '"+startDate1+"', '"+endDate1+"');";
+            String sql22 = "INSERT INTO process VALUES ('"+num+"', '"+processName1+"', '"+startDate1+"', '"+endDate1+"');";
+            String sql222 = "INSERT INTO site_pro VALUES ('"+siteId+"', '"+num+"');";
+            ++num;
             String sql3 = "UPDATE process LEFT OUTER JOIN site_pro USING (processId) SET processName = '"+processName2+"', startDate = '"+startDate2+"', endDate = '"+endDate2+"' WHERE siteId = '"+siteId+"' AND processId = '"+processId.get(1)+"'";
-            String sql33 = "INSERT INTO process VALUES ('"+processId.get(1)+"', '"+processName2+"', '"+startDate2+"', '"+endDate2+"');";
+            String sql33 = "INSERT INTO process VALUES ('"+num+"', '"+processName2+"', '"+startDate2+"', '"+endDate2+"');";
+            String sql333 = "INSERT INTO site_pro VALUES ('"+siteId+"', '"+num+"');";
+            ++num;
             String sql4 = "UPDATE process LEFT OUTER JOIN site_pro USING (processId) SET processName = '"+processName3+"', startDate = '"+startDate3+"', endDate = '"+endDate3+"' WHERE siteId = '"+siteId+"' AND processId = '"+processId.get(2)+"'";
-            String sql44 = "INSERT INTO process VALUES ('"+processId.get(2)+"', '"+processName3+"', '"+startDate3+"', '"+endDate3+"');";
+            String sql44 = "INSERT INTO process VALUES ('"+num+"', '"+processName3+"', '"+startDate3+"', '"+endDate3+"');";
+            String sql444 = "INSERT INTO site_pro VALUES ('"+siteId+"', '"+num+"');";
+            ++num;
             String sql5 = "UPDATE process LEFT OUTER JOIN site_pro USING (processId) SET processName = '"+processName4+"', startDate = '"+startDate4+"', endDate = '"+endDate4+"' WHERE siteId = '"+siteId+"' AND processId = '"+processId.get(3)+"'";
-            String sql55 = "INSERT INTO process VALUES ('"+processId.get(3)+"', '"+processName4+"', '"+startDate4+"', '"+endDate4+"');";
+            String sql55 = "INSERT INTO process VALUES ('"+num+"', '"+processName4+"', '"+startDate4+"', '"+endDate4+"');";
+            String sql555 = "INSERT INTO site_pro VALUES ('"+siteId+"', '"+num+"');";
+            ++num;
             String sql6 = "UPDATE process LEFT OUTER JOIN site_pro USING (processId) SET processName = '"+processName5+"', startDate = '"+startDate5+"', endDate = '"+endDate5+"' WHERE siteId = '"+siteId+"' AND processId = '"+processId.get(4)+"'";
-            String sql66 = "INSERT INTO process VALUES ('"+processId.get(4)+"', '"+processName5+"', '"+startDate5+"', '"+endDate5+"');";
+            String sql66 = "INSERT INTO process VALUES ('"+num+"', '"+processName5+"', '"+startDate5+"', '"+endDate5+"');";
+            String sql666 = "INSERT INTO site_pro VALUES ('"+siteId+"', '"+num+"');";
+            ++num;
             String sql7 = "UPDATE process LEFT OUTER JOIN site_pro USING (processId) SET processName = '"+processName6+"', startDate = '"+startDate6+"', endDate = '"+endDate6+"' WHERE siteId = '"+siteId+"' AND processId = '"+processId.get(5)+"'";
-            String sql77 = "INSERT INTO process VALUES ('"+processId.get(5)+"', '"+processName6+"', '"+startDate6+"', '"+endDate6+"');";
+            String sql77 = "INSERT INTO process VALUES ('"+num+"', '"+processName6+"', '"+startDate6+"', '"+endDate6+"');";
+            String sql777 = "INSERT INTO site_pro VALUES ('"+siteId+"', '"+num+"');";
 
 	        // INSERT文を実行
             stmt.executeUpdate(sql);
             if(processName1 != null){
             	stmt.executeUpdate(sql2);
             }
+            else if (processId.get(0) == 0){
+            	stmt.executeUpdate(sql22);
+            	stmt.executeUpdate(sql222);
+            }
             if(processName2 != null){
             	stmt.executeUpdate(sql3);
+            }
+            else if (processId.get(1) == 0){
+            	stmt.executeUpdate(sql33);
+            	stmt.executeUpdate(sql333);
             }
             if(processName3 != null){
             	stmt.executeUpdate(sql4);
             }
+            else if (processId.get(2) == 0){
+            	stmt.executeUpdate(sql44);
+            	stmt.executeUpdate(sql444);
+            }
             if(processName4 != null){
             	stmt.executeUpdate(sql5);
+            }
+            else if (processId.get(3) == 0){
+            	stmt.executeUpdate(sql55);
+            	stmt.executeUpdate(sql555);
             }
             if(processName5 != null){
             	stmt.executeUpdate(sql6);
             }
+            else if (processId.get(4) == 0){
+            	stmt.executeUpdate(sql66);
+            	stmt.executeUpdate(sql666);
+            }
             if(processName6 != null){
             	stmt.executeUpdate(sql7);
             }
+            else if (processId.get(5) == 0){
+            	stmt.executeUpdate(sql77);
+            	stmt.executeUpdate(sql777);
+            }
 
-            // DBへ更新後DetailList.jspへ
+            // DBへ更新後List.jspへ
             RequestDispatcher rd = request.getRequestDispatcher("./List.jsp");
             rd.forward(request, response);
         }catch (Exception e) {

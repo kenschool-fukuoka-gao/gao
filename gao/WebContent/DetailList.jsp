@@ -35,7 +35,7 @@
 	<div align="center">
 		<table border="0" class="list">
 			<tr>
-				<th>お客様名</th>
+				<th>現場名</th>
 				<th>担当者</th>
 				<th>期限</th>
 				<th>完了</th>
